@@ -93,19 +93,19 @@ def run_crime_creator() -> HiddenStoryDB:
     return generate_structured_response(system, user, HiddenStoryDB)
 
 def get_scene_action_obstacle(state: StateTracker) -> ScenePromptInput:
-    system = "You are the director of a suspenseful murder mystery story. Based on the state of the investigation, propose an action the detective takes next, and an obstacle. Every plot point must advance the case by introducing a new clue, verifying or disproving an alibi, revealing motive/opportunity, or narrowing suspects. Avoid random or unrelated events. Create suspense by gradually increasing difficulty, uncertainty, or time pressure, rather than through chaotic or unrealistic events. If resolving the mystery, the action must head towards identifying the culprit."
+    system = "You are the director of a suspenseful murder mystery story. Based on the state of the investigation, propose an action the detective takes next, and an obstacle. Every plot point must advance the case by introducing a new clue, verifying or disproving an alibi, revealing motive/opportunity, or narrowing suspects. Incorporate meaningful obstacles (e.g., lost evidence, uncooperative witnesses, suspect interference) that increase tension; avoid random or chaotic events. Important clues introduced earlier must be revisited to ensure causal consistency. Once sufficient evidence clearly identifies the culprit, limit remaining steps to a maximum of 2-3 to avoid post-resolution filler. The final action must lead directly into the climactic detective reveal."
     user = f"Current state: {state.model_dump_json()}. Generate the next action and obstacle."
     return generate_structured_response(system, user, ScenePromptInput)
 
 def run_investigation_generator(plot_num: int, gt: HiddenStoryDB, state: StateTracker, action: str, obstacle: str) -> SceneOutcome:
-    system = "You are the Simulation Engine for a detective solving a murder. Generate what happens in this scene based on ground truth constraints and investigation state. All generation must strictly adhere to the underlying truth to avoid contradictions. If this is the final plot point (15+), it must clearly resolve the mystery by identifying the culprit and explaining how and why the crime was committed, ensuring that all major clues and earlier details are logically tied into the conclusion."
+    system = "You are the Simulation Engine for a detective solving a murder. Generate what happens in this scene based on ground truth constraints and investigation state. All generation must strictly adhere to the underlying truth. Important clues introduced earlier must be revisited and used in later reasoning. If this is the final plot point (15+), it must serve as a clear 'detective reveal', explicitly summarizing who committed the crime, how it was carried out, and the motive, while directly referencing key clues uncovered throughout the investigation to prove the conclusion."
     user = f"PLOT POINT: {plot_num}\nGROUND TRUTH: {gt.model_dump_json()}\nINVESTIGATION STATE: {state.model_dump_json()}\nACTION: {action}\nOBSTACLE: {obstacle}\nGenerate outcome."
     out = generate_structured_response(system, user, SceneOutcome)
     if out: out.plot_point_number = plot_num
     return out
 
 def run_narrator(scenes: List[SceneOutcome]) -> str:
-    system = "You are a master mystery novelist. Convert these raw plot points into a fluent, suspenseful story. Explicitly number the plot points (e.g., '1. Detective Vance arrived...'). The overall story must remain coherent, focused, and causally connected from beginning to end."
+    system = "You are a master mystery novelist. Convert these raw plot points into a fluent, suspenseful story. Explicitly number the plot points (e.g., '1. Detective Vance arrived...'). The overall story must remain focused, progressive, and tightly connected from beginning to end, prioritizing clarity and resolution over unnecessary extensions. Ensure the final plot point clearly articulates the dramatic 'detective reveal'."
     user = f"Write the final mystery novel based on these ordered events:\n{json.dumps([s.model_dump() for s in scenes], indent=2)}"
     return generate_text_response(system, user)
 
