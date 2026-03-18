@@ -48,7 +48,4 @@ This will open a browser window to `http://localhost:8501`. Click "Generate Myst
 - **Run Time:** Generating the ground truth, 15 individual investigation loops, and the final narrative takes approximately **60 to 90 seconds** to complete.
 - **Cost:** The system primarily uses `gpt-4o-mini` for the loops and `gpt-4o` for the final narration. The estimated cost per full story generation is roughly **$0.02 - $0.05** depending on story length.
 
-## Exemplar Stories
-To review our successful runs showing the 15+ plot points, and the unsuccessful ("mis-spun") runs highlighting system limitations or hallucinated facts, please see the generated text files included in this repository:
-- `exemplar_success.txt`: A full 15-plot point mystery novel complete with ground truth specs.
-- `exemplar_fail.txt`: A failed demonstration where the AI hallucinates, breaks the 15-loop count, or solves the mystery without evidence.
+
