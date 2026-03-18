@@ -1,4 +1,4 @@
-# CS7636 Phase 1: AI Storytelling
+# CS7634 Phase 1: AI Storytelling
 
 **Team Name:** Blueberry Gorilla
 **Team Members:** Rugved Rajendra, Varun Chandrashekhar, Keshav Garg

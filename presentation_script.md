@@ -6,7 +6,7 @@
 ---
 
 ### Slide 1: Introduction & System Overview
-- **Speaker:** "Welcome to our CS7636 Phase 1 presentation. We are team Blueberry Gorilla, and our system is called the *Detective's Dilemma Simulator*."
+- **Speaker:** "Welcome to our CS7634 Phase 1 presentation. We are team Blueberry Gorilla, and our system is called the *Detective's Dilemma Simulator*."
 - **Content:** "We selected the **Suspense Generation** template. Our system leverages a "Meta-Controller" architecture to generate a thrilling murder mystery."
 - **Key Point:** "To make the mystery non-trivial, we employed a **Double Story** method. First, we generate the 'Hidden Crime Story' (the ground truth), and second, we generate the active 'Solving Story' (the detective's investigation in real time). We introduced elements like red herrings, lying suspects, and time limits to heighten the tension."
 

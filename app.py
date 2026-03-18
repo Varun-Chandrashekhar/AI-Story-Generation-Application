@@ -2,11 +2,11 @@ import streamlit as st
 import os
 
 # Page config must be first
-st.set_page_config(page_title="Suspense Generation - CS7636", layout="wide", page_icon="🕵️‍♂️")
+st.set_page_config(page_title="Suspense Generation - CS7634", layout="wide", page_icon="🕵️‍♂️")
 
 # Custom CSS for modern design and typography (from web_application_development rules)
 st.title("Blueberry Gorilla Suspense Generator")
-st.subheader("AI Storytelling Phase 1 • CS7636")
+st.subheader("AI Storytelling Phase 1 • CS7634")
 
 # API Key Sidebar Configuration
 with st.sidebar:
