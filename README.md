@@ -31,11 +31,7 @@ pip install -r requirements.txt
 ```
 
 #### 2. API Key Configuration
-This system runs on OpenAI models (`gpt-4o-mini` and `gpt-4o`). You must provide an API key. You can do this in two ways locally:
-- **CLI Approach:** Export your key as an environment variable before running the script (`export OPENAI_API_KEY="sk-your-key"`).
-- **UI Approach:** Run the application and paste your API key directly into the secure sidebar panel.
-
-*(Note: If you are an instructor testing this repository, assume there are no hardcoded keys. You must provide your own using one of the methods above).*
+This system runs on OpenAI models (`gpt-4o-mini` and `gpt-4o`). To provide your API key, simply run the application and paste it directly into the secure sidebar panel on the left side of the screen.
 
 #### 3. Launching the App
 Run the following command to start the application:
