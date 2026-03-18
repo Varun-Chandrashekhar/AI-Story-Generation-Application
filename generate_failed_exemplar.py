@@ -1,7 +1,7 @@
 import json
 import os
-from system.schema import StateTracker, SceneOutcome
-from system.modules import run_crime_creator, run_investigation_generator, run_narrator
+from app import StateTracker, SceneOutcome
+from app import run_crime_creator, run_investigation_generator, run_narrator
 
 def generate_failed_story():
     print("Generating Failed Story...")

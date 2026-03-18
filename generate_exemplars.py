@@ -1,6 +1,6 @@
 import sys
 import os
-from system.meta_controller import run_meta_controller
+from app import run_meta_controller
 
 def generate_stories():
     # 1. Successful Story

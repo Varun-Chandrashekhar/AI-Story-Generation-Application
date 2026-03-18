@@ -1,50 +1,183 @@
-import streamlit as st
 import os
+import json
+import streamlit as st
+from pydantic import BaseModel, Field
+from typing import List, Dict, Tuple
+from openai import OpenAI
 
-# Page config must be first
-st.set_page_config(page_title="Suspense Generation - CS7634", layout="wide", page_icon="🕵️‍♂️")
+# ==========================================
+# 1. Schemas & Data Structures (Ground Truth)
+# ==========================================
+class Suspect(BaseModel):
+    name: str = Field(description="Name of the suspect.")
+    means: str = Field(description="How they could have committed the crime.")
+    motive: str = Field(description="Why they would want to commit the crime.")
+    opportunity: str = Field(description="Their alibi or presence at the scene.")
+    is_lying: bool = Field(default=False, description="Whether this suspect will lie in testimonies.")
 
-# Custom CSS for modern design and typography (from web_application_development rules)
-st.title("Blueberry Gorilla Suspense Generator")
-st.subheader("AI Storytelling Phase 1 • CS7634")
+class HiddenStoryDB(BaseModel):
+    victim: str = Field(description="Name of the victim.")
+    killer: str = Field(description="Name of the actual killer.")
+    true_motive: str = Field(description="The real reason the killer committed the crime.")
+    weapon: str = Field(description="The weapon used to commit the murder.")
+    timeline: List[str] = Field(description="Timeline of the killer's actions before, during, and after the crime.")
+    suspects: List[Suspect] = Field(description="List of all plausible suspects including the killer and innocent parties.")
+    red_herrings: List[str] = Field(description="Irrelevant clues meant to confuse the detective.")
+    interference_plan: str = Field(description="How the killer is actively trying to hide their tracks or frame others.")
 
-# API Key Sidebar Configuration
-with st.sidebar:
-    st.header("⚙️ Configuration")
-    user_api_key = st.text_input("OpenAI API Key (Optional if set in Env)", type="password")
-    if user_api_key:
-        os.environ["OPENAI_API_KEY"] = user_api_key
-        st.success("API Key loaded into environment.")
-        
-    st.markdown("---")
-    st.markdown("### Architecture Components")
-    st.markdown("- **Crime Creator:** Synthesizes Ground Truth.")
-    st.markdown("- **Investigation Generator:** Creates raw scene outcomes.")
-    st.markdown("- **State Tracker:** Checks consistency of clues across loops.")
-    st.markdown("- **Meta-Controller:** Enforces 15+ plot point loop.")
-    st.markdown("- **Narrator:** Translates scenes into fluent prose.")
+class SceneOutcome(BaseModel):
+    plot_point_number: int = Field(description="The current step in the investigation (1-15+).")
+    action_taken: str = Field(description="What the detective did in this scene.")
+    obstacle_faced: str = Field(description="The challenge or confounding information the detective encountered.")
+    outcome: str = Field(description="What happened and what was discovered or lost. Could be a success or failure.")
+    suspense_element: str = Field(description="How time pressure or stakes were increased in this scene.")
 
-from system.meta_controller import run_meta_controller
+class StateTracker(BaseModel):
+    current_plot_count: int = Field(default=0, description="Number of plot points completed.")
+    known_clues: List[str] = Field(default_factory=list, description="Clues the detective has found.")
+    testimonies: Dict[str, str] = Field(default_factory=dict, description="Statements given by suspects.")
+    remaining_time: int = Field(default=24, description="Hours left to solve the case.")
+    completed_scenes: List[SceneOutcome] = Field(default_factory=list, description="History of outcomes.")
 
-tab1, tab2 = st.tabs(["📝 Generate Novel", "🔍 View Hidden Story DB"])
+class ScenePromptInput(BaseModel):
+    action_hint: str = Field(description="A hint of what action the detective takes.")
+    obstacle_hint: str = Field(description="A hint of the obstacle the detective faces in this scene.")
 
-with tab1:
-    st.write("Click the button below to initialize the **Meta-Controller** and begin generating the mystery. The system will first establish the ground truth (Crime Story) and then iteratively build the investigation scenes (Solving Story), ensuring suspense is added at each of the 15+ plot points.")
+# ==========================================
+# 2. LLM Utilities
+# ==========================================
+def get_openai_client():
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        try:
+            if "OPENAI_API_KEY" in st.secrets:
+                api_key = st.secrets["OPENAI_API_KEY"]
+        except Exception:
+            pass
+    if not api_key:
+        st.error("Missing OPENAI_API_KEY. Please set the OPENAI_API_KEY environment variable or provide it in the UI.")
+        st.stop()
+    return OpenAI(api_key=api_key)
+
+def generate_structured_response(system_prompt: str, user_prompt: str, response_model: type[BaseModel], model: str = "gpt-4o-mini"):
+    client = get_openai_client()
+    try:
+        completion = client.beta.chat.completions.parse(
+            model=model,
+            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
+            response_format=response_model,
+        )
+        return completion.choices[0].message.parsed
+    except Exception as e:
+        print(f"Error calling LLM: {e}")
+        return None
+
+def generate_text_response(system_prompt: str, user_prompt: str, model: str = "gpt-4o"):
+    client = get_openai_client()
+    try:
+        completion = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+        )
+        return completion.choices[0].message.content
+    except Exception as e:
+        print(f"Error calling LLM: {e}")
+        return None
+
+# ==========================================
+# 3. Architecture Modules
+# ==========================================
+def run_crime_creator() -> HiddenStoryDB:
+    system = "You are the master designer of a thrilling murder mystery. Populate the hidden backstory of a murder."
+    user = "Generate the complete hidden truth of the murder mystery."
+    return generate_structured_response(system, user, HiddenStoryDB)
+
+def get_scene_action_obstacle(state: StateTracker) -> ScenePromptInput:
+    system = "You are the director of a suspenseful murder mystery story. Based on the state of the investigation, propose an action the detective takes next, and an obstacle."
+    user = f"Current state: {state.model_dump_json()}. Generate the next action and obstacle."
+    return generate_structured_response(system, user, ScenePromptInput)
+
+def run_investigation_generator(plot_num: int, gt: HiddenStoryDB, state: StateTracker, action: str, obstacle: str) -> SceneOutcome:
+    system = "You are the Simulation Engine for a detective solving a murder. Generate what happens in this scene based on ground truth constraints and investigation state."
+    user = f"PLOT POINT: {plot_num}\nGROUND TRUTH: {gt.model_dump_json()}\nINVESTIGATION STATE: {state.model_dump_json()}\nACTION: {action}\nOBSTACLE: {obstacle}\nGenerate outcome."
+    out = generate_structured_response(system, user, SceneOutcome)
+    if out: out.plot_point_number = plot_num
+    return out
+
+def run_narrator(scenes: List[SceneOutcome]) -> str:
+    system = "You are a master mystery novelist. Convert these raw plot points into a fluent, suspenseful story. Explicitly number the plot points (e.g., '1. Detective Vance arrived...')."
+    user = f"Write the final mystery novel based on these ordered events:\n{json.dumps([s.model_dump() for s in scenes], indent=2)}"
+    return generate_text_response(system, user)
+
+# ==========================================
+# 4. Meta-Controller Loop
+# ==========================================
+def run_meta_controller(yield_updates=True) -> Tuple[HiddenStoryDB, str]:
+    if yield_updates: st.write("🕵️ **Step 1:** Initializing Crime Creator...")
+    ground_truth = run_crime_creator()
+    if not ground_truth: return None, "Error generating crime."
     
-    if st.button("Generate Mystery Novel 📖"):
-        with st.spinner("Meta-Controller is directing the story components..."):
-            ground_truth, final_story = run_meta_controller(yield_updates=True)
-            
-            if ground_truth and final_story:
-                st.session_state["ground_truth"] = ground_truth.model_dump_json(indent=2)
-                st.success("Generation Complete!")
-                
-                st.markdown("### The Final Novel")
-                st.write(final_story)
+    if yield_updates: st.success(f"Crime generated! The killer is secretly: {ground_truth.killer}")
+    
+    state = StateTracker()
+    MIN_PLOT_POINTS = 15
+    while state.current_plot_count < MIN_PLOT_POINTS:
+        state.current_plot_count += 1
+        scene_in = get_scene_action_obstacle(state)
+        action_hint = scene_in.action_hint if scene_in else "Detective uncovers a new trace."
+        obstacle_hint = scene_in.obstacle_hint if scene_in else "Time is running out."
+        if yield_updates: st.info(f"**Plot Point {state.current_plot_count}/{MIN_PLOT_POINTS}:** {action_hint} (Obstacle: {obstacle_hint})")
+        
+        outcome = run_investigation_generator(state.current_plot_count, ground_truth, state, action_hint, obstacle_hint)
+        if outcome:
+            state.completed_scenes.append(outcome)
+            if "clue" in outcome.outcome.lower(): state.known_clues.append(f"Clue found in scene {state.current_plot_count}")
+            if yield_updates:
+                with st.expander(f"Scene {state.current_plot_count} Outcome"):
+                    st.write(f"**Action:** {outcome.action_taken}")
+                    st.write(f"**Outcome:** {outcome.outcome}")
+        state.remaining_time -= 1
+        
+    if yield_updates: st.write("✍️ **Step 3:** Investigation complete! Passing raw events to the Narrator...")
+    return ground_truth, run_narrator(state.completed_scenes)
 
-with tab2:
-    if "ground_truth" in st.session_state:
-        st.write("Behind the scenes, the **Crime Creator** generated these constraints. The **Meta-Controller** ensured the **Investigation Generator** adhered to them.")
-        st.code(st.session_state["ground_truth"], language="json")
-    else:
-        st.info("The Hidden Story DB will be populated here after you generate a novel.")
+# ==========================================
+# 5. Streamlit Frontend
+# ==========================================
+if __name__ == "__main__":
+    st.set_page_config(page_title="Suspense Generation - CS7634", layout="wide", page_icon="🕵️‍♂️")
+    st.title("Blueberry Gorilla Suspense Generator")
+    st.subheader("AI Storytelling Phase 1 • CS7634")
+
+    with st.sidebar:
+        st.header("⚙️ Configuration")
+        user_api_key = st.text_input("OpenAI API Key", type="password")
+        if user_api_key:
+            os.environ["OPENAI_API_KEY"] = user_api_key
+            st.success("API Key loaded into environment.")
+        st.markdown("---")
+        st.markdown("### Architecture Components")
+        st.markdown("- **Crime Creator:** Outputs Ground Truth.")
+        st.markdown("- **Investigation Generator:** Creates raw scene outcomes.")
+        st.markdown("- **State Tracker:** Checks consistency of clues across loops.")
+        st.markdown("- **Meta-Controller:** Enforces 15+ plot point loop.")
+        st.markdown("- **Narrator:** Translates scenes into fluent prose.")
+
+    tab1, tab2 = st.tabs(["📝 Generate Novel", "🔍 View Hidden Story DB"])
+    with tab1:
+        st.write("Click below to initialize the **Meta-Controller** and begin generating the mystery. The system will first establish the ground truth (Crime Story) and then iteratively build the investigation scenes (Solving Story), ensuring suspense is added at each of the 15+ plot points.")
+        if st.button("Generate Mystery Novel 📖"):
+            with st.spinner("Meta-Controller is directing the story components..."):
+                ground_truth, final_story = run_meta_controller(yield_updates=True)
+                if ground_truth and final_story:
+                    st.session_state["ground_truth"] = ground_truth.model_dump_json(indent=2)
+                    st.success("Generation Complete!")
+                    st.markdown("### The Final Novel")
+                    st.write(final_story)
+
+    with tab2:
+        if "ground_truth" in st.session_state:
+            st.write("Behind the scenes, the **Crime Creator** generated these constraints. The **Meta-Controller** ensured the **Investigation Generator** adhered to them.")
+            st.code(st.session_state["ground_truth"], language="json")
+        else:
+            st.info("The Hidden Story DB will be populated here after you generate a novel.")
