@@ -71,7 +71,7 @@ class SceneOutcome(BaseModel):
         description="How that suspense event makes the next step riskier, harder, or more urgent."
     )
 
-    # Natural-language explanation of what happened and why it matters
+    # Natural language explanation of what happened and why it matters
     outcome: str = Field(description="What happened in the scene.")
     theory_progress: str = Field(description="How the case became more solvable after this scene.")
     weapon_confirmed: bool = Field(default=False, description="Whether this scene confirms the murder weapon.")
@@ -181,7 +181,7 @@ def generate_text_response(system_prompt: str, user_prompt: str, model: str = "g
         return None
 
 # ==========================================
-# 3. Crime Creator
+# 3. [ARCHITECTURE COMPONENT: Phase I Story Generator]
 # ==========================================
 # This creates the hidden ground truth of the entire mystery.
 
@@ -190,21 +190,21 @@ def run_crime_creator() -> HiddenStoryDB:
     You are the master designer of a logically consistent murder mystery.
 
     Generate a Hidden Story DB with:
-    - one victim
-    - one actual killer
-    - a clear true motive
-    - a specific weapon or method
-    - a detailed timeline
-    - 4 plausible suspects total, including the killer
-    - at least 2 red herrings
-    - a realistic interference plan by the killer
+    * one victim
+    * one actual killer
+    * a clear true motive
+    * a specific weapon or method
+    * a detailed timeline
+    * 4 plausible suspects total, including the killer
+    * at least 2 red herrings
+    * a realistic interference plan by the killer
 
     Rules:
-    - all suspects must be plausible
-    - innocent suspects must have believable means, motive, and opportunity but still be ultimately exonerable
-    - the timeline must support later investigation
-    - the solution must be solvable
-    - the interference plan should create recurring opportunities for suspense
+    * all suspects must be plausible
+    * innocent suspects must have believable means, motive, and opportunity but still be ultimately exonerable
+    * the timeline must support later investigation
+    * the solution must be solvable
+    * the interference plan should create recurring opportunities for suspense
     """
     user = "Generate the complete hidden truth of the murder mystery."
     return generate_structured_response(system, user, HiddenStoryDB)
@@ -222,9 +222,9 @@ def choose_persistent_suspense_beat(gt: HiddenStoryDB) -> PersistentSuspenseBeat
     Pick exactly one suspense beat that can recur throughout the whole investigation.
 
     Good suspense beat examples:
-    - case closure deadline
-    - detective is being threatened
-    - a key piece of evidence is being quietly erased or altered
+    * case closure deadline
+    * detective is being threatened
+    * a key piece of evidence is being quietly erased or altered
 
     Rules:
     1. Choose only one core suspense beat.
@@ -325,7 +325,7 @@ def recent_scene_summary(state: StateTracker, max_scenes: int = 3) -> str:
     return json.dumps(trimmed, indent=2)
 
 # ==========================================
-# 5. Planner / Meta-Controller
+# 5. Planner / Meta Controller
 # ==========================================
 # The planner chooses what the next scene should accomplish.
 
@@ -358,11 +358,11 @@ def get_scene_action_obstacle(gt: HiddenStoryDB, state: StateTracker) -> ScenePr
     6. Avoid generic phrasing like 'tension rises' or 'pressure increases' unless tied to a real event.
 
     Output:
-    - action_hint
-    - obstacle_hint
-    - target_suspect
-    - coverage_goal
-    - suspense_use_in_scene
+    * action_hint
+    * obstacle_hint
+    * target_suspect
+    * coverage_goal
+    * suspense_use_in_scene
     """
 
     persistent_suspense_json = (
@@ -424,7 +424,7 @@ def run_investigation_generator(
         1. who committed the murder
         2. the exact motive
         3. the exact weapon or method
-        4. the step-by-step timeline of the murder
+        4. the step by step timeline of the murder
         5. why each other suspect is not the killer
         6. how each red herring misled the investigation
         7. how the killer interfered with the investigation
@@ -444,10 +444,10 @@ def run_investigation_generator(
         You are the simulation engine for a detective solving a murder.
 
         Generate the next scene using:
-        - the hidden ground truth
-        - the investigation state
-        - the planned next scene
-        - the persistent suspense beat
+        * the hidden ground truth
+        * the investigation state
+        * the planned next scene
+        * the persistent suspense beat
 
         INVESTIGATION RULES:
         1. Advance the investigation concretely.
@@ -461,7 +461,7 @@ def run_investigation_generator(
         1. The persistent suspense beat must appear in this scene as a concrete event.
         2. Do not replace it with a different suspense idea.
         3. Do not write vague phrases like 'tension rises' or 'pressure increases.'
-        4. The suspense manifestation must be observable and story-relevant.
+        4. The suspense manifestation must be observable and story relevant.
         5. The suspense consequence must create pressure that carries into the next scene.
         6. The suspense should feel like the same recurring problem taking a new form.
 
@@ -531,7 +531,7 @@ def update_state_from_scene(gt: HiddenStoryDB, state: StateTracker, outcome: Sce
     if outcome.suspect_focus and outcome.opportunity_tested and outcome.suspect_focus not in state.suspects_with_opportunity_checked:
         state.suspects_with_opportunity_checked.append(outcome.suspect_focus)
 
-    # Only non-killers can be added to cleared suspects
+    # Only non killers can be added to cleared suspects
     if outcome.suspect_focus and outcome.suspect_cleared and outcome.suspect_focus != gt.killer:
         if outcome.suspect_focus not in state.suspects_cleared:
             state.suspects_cleared.append(outcome.suspect_focus)
@@ -571,7 +571,7 @@ def update_state_from_scene(gt: HiddenStoryDB, state: StateTracker, outcome: Sce
     # Decrease available time to reinforce urgency
     state.remaining_time -= 1
 
-    # Re-check whether the case is ready for the final reveal
+    # Re check whether the case is ready for the final reveal
     state.final_theory_ready = case_ready_for_final_reveal(gt, state)
 
 def run_narrator(gt: HiddenStoryDB, scenes: List[SceneOutcome], state: StateTracker) -> str:
@@ -584,15 +584,15 @@ def run_narrator(gt: HiddenStoryDB, scenes: List[SceneOutcome], state: StateTrac
     Transform the ordered investigation record into a cohesive, immersive detective story.
 
     The story must preserve:
-    - the victim
-    - every suspect and their investigative role
-    - the true culprit
-    - the true motive
-    - the true weapon or method
-    - the real timeline of the crime
-    - the red herrings and how they were resolved
-    - the killer's interference with the investigation
-    - the persistent suspense beat
+    * the victim
+    * every suspect and their investigative role
+    * the true culprit
+    * the true motive
+    * the true weapon or method
+    * the real timeline of the crime
+    * the red herrings and how they were resolved
+    * the killer's interference with the investigation
+    * the persistent suspense beat
 
     STYLE RULES:
     1. Do NOT number scenes or label plot points.
@@ -601,7 +601,7 @@ def run_narrator(gt: HiddenStoryDB, scenes: List[SceneOutcome], state: StateTrac
     4. Follow the chronological order of discoveries, but blend them smoothly.
     5. Let clues emerge through action, dialogue, and observation.
     6. Maintain the same persistent suspense beat throughout.
-    7. Avoid repetitive phrasing like “then they investigated.”
+    7. Avoid repetitive phrasing like 'then they investigated.'
     8. Write in the style of contemporary detective fiction: immersive, clear, and suspenseful.
 
     CRITICAL ENDING REQUIREMENTS:
@@ -610,16 +610,16 @@ def run_narrator(gt: HiddenStoryDB, scenes: List[SceneOutcome], state: StateTrac
     This reconstruction must:
     1. Clearly state WHY the killer committed the crime (motive).
     2. Clearly explain HOW the crime was physically carried out (method and execution).
-    3. Walk through the timeline step-by-step in natural language.
+    3. Walk through the timeline step by step in natural language.
     4. Show how the evidence discovered supports each part of the reconstruction.
     5. Explicitly explain why each other suspect is not the killer.
-    6. Show how the killer’s interference failed in the end.
+    6. Show how the killer's interference failed in the end.
     7. Feel like a dramatic but precise explanation, not a vague summary.
 
     The reader should finish the story with ZERO ambiguity about:
-    - what happened
-    - how it happened
-    - why it happened
+    * what happened
+    * how it happened
+    * why it happened
 
     The ending should feel like the truth finally locking into place after being unstable.
 
@@ -644,15 +644,15 @@ def run_narrator(gt: HiddenStoryDB, scenes: List[SceneOutcome], state: StateTrac
     {json.dumps([s.model_dump() for s in scenes], indent=2)}
 
     Important:
-    - Preserve the chronological order of discoveries.
-    - Include all suspects meaningfully.
-    - Ensure the ending fully reconstructs the crime in detail.
+    * Preserve the chronological order of discoveries.
+    * Include all suspects meaningfully.
+    * Ensure the ending fully reconstructs the crime in detail.
     """
 
     return generate_text_response(system, user)
 
 # ==========================================
-# 9. Meta-Controller Loop
+# 9. Meta Controller Loop
 # ==========================================
 # This is the main engine that coordinates all major components.
 
@@ -738,7 +738,7 @@ def run_meta_controller(yield_updates: bool = True) -> Tuple[Optional[HiddenStor
                 st.write(f"**Outcome:** {outcome.outcome}")
                 st.write(f"**Theory Progress:** {outcome.theory_progress}")
 
-    # If the case is ready, generate one formal final-reveal scene
+    # If the case is ready, generate one formal final reveal scene
     if case_ready_for_final_reveal(ground_truth, state) and state.current_plot_count < MAX_PLOT_POINTS:
         state.current_plot_count += 1
 
@@ -782,9 +782,9 @@ def run_meta_controller(yield_updates: bool = True) -> Tuple[Optional[HiddenStor
 # ==========================================
 # These models turn the Phase I generated investigation into a playable text game.
 # The player acts as the detective. Their actions are categorized as:
-# - constituent: part of the planned story event
-# - consistent: extra action that fits the world and does not break causal links
-# - exceptional: action that threatens an active causal link or makes the mystery unsolvable
+# * constituent: part of the planned story event
+# * consistent: extra action that fits the world and does not break causal links
+# * exceptional: action that threatens an active causal link or makes the mystery unsolvable
 
 class Room(BaseModel):
     name: str = Field(description="Room/location name.")
@@ -795,18 +795,18 @@ class Room(BaseModel):
     characters: List[str] = Field(default_factory=list, description="Characters currently in the room.")
 
 class SceneRoomAssignment(BaseModel):
-    scene_index: int = Field(description="1-based index of the investigation scene.")
+    scene_index: int = Field(description="1 based index of the investigation scene.")
     room_name: str = Field(description="Unique, concrete physical room/location assigned to this scene.")
     reason: str = Field(description="Why this room fits the planned action and scene content.")
 
 class SynthesizedRoom(BaseModel):
     name: str = Field(description="Clear unique physical room/location name.")
-    description: str = Field(description="Short first-visit description for this room.")
+    description: str = Field(description="Short first visit description for this room.")
     connected_rooms: List[str] = Field(default_factory=list, description="Nearby rooms reachable from this room.")
 
 class WorldLocationPlan(BaseModel):
-    rooms: List[SynthesizedRoom] = Field(description="All unique physical rooms needed for the whole 15-event mystery.")
-    assignments: List[SceneRoomAssignment] = Field(description="Scene-to-room assignment for each investigation scene.")
+    rooms: List[SynthesizedRoom] = Field(description="All unique physical rooms needed for the whole 15 event mystery.")
+    assignments: List[SceneRoomAssignment] = Field(description="Scene to room assignment for each investigation scene.")
     weapon_room: str = Field(description="Room where the murder weapon physically exists as hidden evidence, without revealing it to the player.")
 
 class InteractiveEvent(BaseModel):
@@ -831,7 +831,7 @@ class WorldState(BaseModel):
     unavailable_characters: List[str] = Field(default_factory=list)
     # Tracks where each NPC currently is so a character cannot appear in two rooms at once.
     character_locations: Dict[str, str] = Field(default_factory=dict)
-    # Tracks which rooms have already received a full first-visit description.
+    # Tracks which rooms have already received a full first visit description.
     visited_rooms: List[str] = Field(default_factory=list)
     # The murder weapon exists as a physical object in one room, even if the player has not identified it yet.
     murder_weapon_location: Optional[str] = None
@@ -879,7 +879,7 @@ class InterventionResult(BaseModel):
 
 
 class SceneDiscoveryMarker(BaseModel):
-    scene_index: int = Field(description="1-based scene index after adaptation.")
+    scene_index: int = Field(description="1 based scene index after adaptation.")
     reveals_cause_of_death: bool = Field(default=False, description="True only if this scene is the plot point where the detective learns the cause of death.")
     reveals_murder_weapon: bool = Field(default=False, description="True only if this scene is the plot point where the detective identifies or finds the murder weapon.")
     reason: str = Field(description="Why the marker applies to this scene.")
@@ -889,11 +889,11 @@ class TimelineAdaptationResult(BaseModel):
     """Event Timeline Adaptation output for Phase II.
 
     The Phase I generator still creates the actual investigation plot points. This model
-    adapts those generated plot points into exactly 14 playable pre-accusation events,
+    adapts those generated plot points into exactly 14 playable pre accusation events,
     removes repeated beats, and marks which generated scenes reveal cause of death and
     murder weapon. It does not use hardcoded replacement scenes.
     """
-    scenes: List[SceneOutcome] = Field(description="Exactly 14 non-repeating Phase-I-derived scenes before the final accusation.")
+    scenes: List[SceneOutcome] = Field(description="Exactly 14 non repeating Phase I derived scenes before the final accusation.")
     discovery_markers: List[SceneDiscoveryMarker] = Field(description="Markers showing where cause of death and murder weapon are discovered.")
     removed_or_merged_repetitions: List[str] = Field(default_factory=list, description="Brief notes on repeated scenes that were merged, rewritten, or removed.")
     causal_consistency_notes: str = Field(description="How the sequence makes each later event motivated by earlier information.")
@@ -948,7 +948,7 @@ def extract_explicit_physical_location(text: str) -> Optional[str]:
     """Detect explicit locations via LLM."""
     if not text:
         return None
-    system = "Extract the explicit physical location from the text. Return ONLY the location name (2-4 words). If no physical location is mentioned, return 'None'."
+    system = "Extract the explicit physical location from the text. Return ONLY the location name (2 to 4 words). If no physical location is mentioned, return 'None'."
     user = f"Text: {text}"
     res = generate_text_response(system, user, model="gpt-4o-mini")
     if res and res.lower() != "none":
@@ -980,21 +980,21 @@ def fallback_room_for_scene(scene: SceneOutcome, gt: HiddenStoryDB) -> str:
 
     Normal room assignment is handled by synthesize_world_locations(), which sees all
     scenes together and assigns unique physical rooms with an LLM. This fallback avoids
-    keyword-based semantic decisions.
+    keyword based semantic decisions.
     """
     return "Crime Scene"
 
 
 def infer_event_location(gt: HiddenStoryDB, scene: SceneOutcome) -> str:
     # First use deterministic extraction from the planned action/outcome. This prevents
-    # scenes that explicitly say “investigate the rooftop/storage room/etc.” from being
+    # scenes that explicitly say 'investigate the rooftop/storage room/etc.' from being
     # flattened into the generic Crime Scene.
     deterministic = fallback_room_for_scene(scene, gt)
     if deterministic != "Crime Scene":
         return deterministic
 
     system = """
-    You convert a detective scene into one concise playable text-game location.
+    You convert a detective scene into one concise playable text game location.
     Return only a concrete physical place name, 2 to 4 words.
     Good examples: Crime Scene, Police Station, Records Office, Forensics Lab, Evidence Locker, Victim's Apartment, Security Office, Medical Examiner's Office, Apartment Hallway, Courtyard.
     Bad examples: Interrogation Room, Interview Room, Confrontation Room, Reveal Room, Accusation Room.
@@ -1010,14 +1010,17 @@ def infer_event_location(gt: HiddenStoryDB, scene: SceneOutcome) -> str:
     return sanitize_room_name(text)
 
 
-
+# ==========================================
+# [ARCHITECTURE COMPONENT: World Generator]
+# ==========================================
+# This synthesizes all rooms and physical connections based on the adapted timeline.
 
 def synthesize_world_locations(gt: HiddenStoryDB, scenes: List[SceneOutcome]) -> WorldLocationPlan:
     """Create all room names in one global pass, then assign every scene to one room.
 
-    This replaces the older one-scene-at-a-time location inference. The LLM sees the
-    whole pre-accusation investigation plan at once, so it can avoid overlapping names like
-    "Office" vs "Victim's Office" and keep locations aligned with planned actions.
+    This replaces the older one scene at a time location inference. The LLM sees the
+    whole pre accusation investigation plan at once, so it can avoid overlapping names like
+    'Office' vs 'Victim's Office' and keep locations aligned with planned actions.
     """
     scene_briefs = []
     for idx, scene in enumerate(scenes, start=1):
@@ -1043,11 +1046,11 @@ def synthesize_world_locations(gt: HiddenStoryDB, scenes: List[SceneOutcome]) ->
     2. Every room name must be a concrete physical place, not an action label.
     3. Forbidden room names include: Interrogation Room, Interview Room, Confrontation Room,
        Reveal Room, Accusation Room, Questioning Room, Evidence Beat Room.
-    4. Room names must be clearly different from each other. Do not create near-duplicates
+    4. Room names must be clearly different from each other. Do not create near duplicates
        such as Office/Victim's Office, Lab/Forensics Lab, Hall/Hallway.
     5. If a planned action investigates a specific physical place, create/use that place as
        a room and assign that scene there.
-    6. Assign every investigation scene exactly once using its 1-based scene_index.
+    6. Assign every investigation scene exactly once using its 1 based scene_index.
     7. Include Crime Scene as the starting room.
     8. Include Police Station as the final accusation room.
     9. The murder weapon must be placed in weapon_room as hidden evidence, but do not reveal
@@ -1062,18 +1065,18 @@ def synthesize_world_locations(gt: HiddenStoryDB, scenes: List[SceneOutcome]) ->
     INVESTIGATION SCENES TO PLACE:
     {json.dumps(scene_briefs, indent=2)}
 
-    Build a global room plan and scene-to-room assignment.
+    Build a global room plan and scene to room assignment.
     """
     plan = generate_structured_response(system, user, WorldLocationPlan, model="gpt-4o-mini")
 
     if plan is None:
-        # Deterministic fallback still uses the full scene list, then de-duplicates globally.
+        # Deterministic fallback still uses the full scene list, then de duplicates globally.
         assignments = []
         room_names = ["Crime Scene", "Police Station"]
         for idx, scene in enumerate(scenes, start=1):
             room_name = sanitize_room_name(fallback_room_for_scene(scene, gt))
             if room_name not in room_names:
-                # Avoid too many generic one-off rooms by relying on sanitize/fallback.
+                # Avoid too many generic one off rooms by relying on sanitize/fallback.
                 room_names.append(room_name)
             assignments.append(SceneRoomAssignment(
                 scene_index=idx,
@@ -1167,23 +1170,23 @@ def synthesize_world_locations(gt: HiddenStoryDB, scenes: List[SceneOutcome]) ->
 
 
 class CauseOfDeathResult(BaseModel):
-    cause_of_death: str = Field(description="A spoiler-safe medical cause category derived from the hidden weapon/method.")
+    cause_of_death: str = Field(description="A spoiler safe medical cause category derived from the hidden weapon/method.")
 
 def derive_cause_of_death_from_weapon(weapon: str) -> str:
-    """Return a spoiler-safe medical cause category from the hidden weapon/method using an LLM.
+    """Return a spoiler safe medical cause category from the hidden weapon/method using an LLM.
 
     This lets the detective discover cause of death before the exact murder weapon.
     """
     weapon_str = weapon if weapon else "unknown"
     system = """
-    You are a medical examiner. Given a murder weapon or method, return a spoiler-safe medical cause of death category.
+    You are a medical examiner. Given a murder weapon or method, return a spoiler safe medical cause of death category.
     Examples of cause of death: 
-    - poisoning
-    - gunshot trauma
-    - sharp-force trauma
-    - asphyxiation from neck compression
-    - blunt-force trauma
-    - fatal smoke or burn injury
+    * poisoning
+    * gunshot trauma
+    * sharp force trauma
+    * asphyxiation from neck compression
+    * blunt force trauma
+    * fatal smoke or burn injury
     If unclear, return 'injuries consistent with a deliberate homicide'.
     """
     user = f"Weapon/Method: {weapon_str}"
@@ -1194,8 +1197,13 @@ def derive_cause_of_death_from_weapon(weapon: str) -> str:
     return "injuries consistent with a deliberate homicide"
 
 
+# ==========================================
+# [ARCHITECTURE COMPONENT: Event Timeline Adaptation]
+# ==========================================
+# This adapts Phase I plot points into a playable, causally ordered sequence for Phase II.
+
 def adapt_phase1_scenes_to_interactive_timeline(gt: HiddenStoryDB, generated_scenes: List[SceneOutcome]) -> Tuple[List[SceneOutcome], Dict[int, SceneDiscoveryMarker]]:
-    """Use an LLM to adapt Phase I plot points into 14 playable pre-accusation beats.
+    """Use an LLM to adapt Phase I plot points into 14 playable pre accusation beats.
 
     This does not create hardcoded discovery scenes. The Phase I generator remains the
     source of the story. The LLM sees all Phase I scenes, removes repeats, makes the
@@ -1236,7 +1244,7 @@ def adapt_phase1_scenes_to_interactive_timeline(gt: HiddenStoryDB, generated_sce
     Return a valid TimelineAdaptationResult.
 
     HARD RULES:
-    1. Return exactly 14 pre-accusation scenes. Event 15 is the final accusation and is
+    1. Return exactly 14 pre accusation scenes. Event 15 is the final accusation and is
        added elsewhere.
     2. Use the Phase I generated scenes as the content source. You may lightly rewrite,
        merge, split, or clarify them only to make them interactive and causally ordered.
@@ -1454,7 +1462,7 @@ def room_entry_context(world: WorldState, events: List[InteractiveEvent]) -> Dic
 
 
 def format_entry_fallback(context: Dict[str, object]) -> str:
-    """Fallback room-entry narration if the LLM narrator is unavailable."""
+    """Fallback room entry narration if the LLM narrator is unavailable."""
     name = context["room_name"]
     objects = context.get("visible_objects") or []
     people = context.get("visible_characters") or []
@@ -1475,7 +1483,7 @@ def format_entry_fallback(context: Dict[str, object]) -> str:
     return "\n\n".join(lines)
 
 def build_interactive_plan(gt: HiddenStoryDB, state: StateTracker) -> Tuple[WorldState, List[InteractiveEvent]]:
-    """Build a 15-event, playable, causally consistent event plan from Phase I scenes."""
+    """Build a 15 event, playable, causally consistent event plan from Phase I scenes."""
     world = WorldState()
     events: List[InteractiveEvent] = []
     connect_rooms(world)
@@ -1491,8 +1499,8 @@ def build_interactive_plan(gt: HiddenStoryDB, state: StateTracker) -> Tuple[Worl
     for suspect in gt.suspects:
         place_character(world, suspect.name, "Police Station")
 
-    # Build the 14 pre-accusation beats globally. Cause-of-death discovery and
-    # murder-weapon discovery are guaranteed plot points, but they are placed
+    # Build the 14 pre accusation beats globally. Cause of death discovery and
+    # murder weapon discovery are guaranteed plot points, but they are placed
     # wherever they naturally fit instead of being hardcoded as Event 1/Event 2.
     scenes, discovery_markers = adapt_phase1_scenes_to_interactive_timeline(gt, state.completed_scenes)
 
@@ -1522,7 +1530,7 @@ def build_interactive_plan(gt: HiddenStoryDB, state: StateTracker) -> Tuple[Worl
         # Do not place every focused suspect during world generation. Suspects start in one
         # physical place, then move only when the live event logic needs them elsewhere.
 
-        # Preconditions are deliberately player-actionable: location access, character availability,
+        # Preconditions are deliberately player actionable: location access, character availability,
         # object intactness, and the previous lead being discovered through earlier play.
         preconditions = [f"Detective is at {room_name}"]
         if previous_unlock_fact:
@@ -1617,7 +1625,7 @@ def build_interactive_plan(gt: HiddenStoryDB, state: StateTracker) -> Tuple[Worl
 def describe_current_location(world: WorldState, events: List[InteractiveEvent]) -> str:
     """
     Present the player's current situation as live narration instead of a dashboard.
-    The room data still exists for the game engine, but the player sees a story-like scene.
+    The room data still exists for the game engine, but the player sees a story like scene.
     """
     room = world.rooms[world.player_location]
     next_event = events[world.event_index] if world.event_index < len(events) else None
@@ -1642,7 +1650,7 @@ def describe_current_location(world: WorldState, events: List[InteractiveEvent])
 
 
 def nearby_areas_text(world: WorldState) -> str:
-    """Return a natural-language list of nearby explorable areas."""
+    """Return a natural language list of nearby explorable areas."""
     room = world.rooms[world.player_location]
     destinations = []
     for _, dest in room.exits.items():
@@ -1668,7 +1676,7 @@ def room_options_text(world: WorldState) -> str:
 
 
 def generate_opening_narration(gt: HiddenStoryDB, world: WorldState, events: List[InteractiveEvent], state: StateTracker) -> str:
-    """Create the first live-fiction paragraph the player sees after generation."""
+    """Create the first live fiction paragraph the player sees after generation."""
     context = room_entry_context(world, events)
     nearby = nearby_areas_text(world)
     room_options = room_options_text(world)
@@ -1677,22 +1685,22 @@ def generate_opening_narration(gt: HiddenStoryDB, world: WorldState, events: Lis
     Write the opening scene in second person, as if the player is the detective arriving for the first time.
 
     Hard continuity rules:
-    - The detective has JUST arrived at the scene.
-    - Do NOT say the detective has already interviewed anyone, searched anything, collected evidence, followed leads, or investigated earlier.
-    - Do NOT reference future events, future clues, hidden motives, the killer, or the generated event timeline.
-    - Only describe what is visible right now at the current location.
-    - Make it clear the player can decide what to do next.
+    * The detective has JUST arrived at the scene.
+    * Do NOT say the detective has already interviewed anyone, searched anything, collected evidence, followed leads, or investigated earlier.
+    * Do NOT reference future events, future clues, hidden motives, the killer, or the generated event timeline.
+    * Only describe what is visible right now at the current location.
+    * Make it clear the player can decide what to do next.
 
     Content requirements:
-    - Introduce the overall situation: there has been a murder, who the victim is, why the detective was called, and what immediate uncertainty surrounds the scene.
-    - Describe how the crime scene looks and feels.
-    - Mention people physically present in the room and make clear they have not been questioned yet.
-    - Mention visible objects in the room, but do NOT identify or name the murder weapon.
-    - You may describe visual clues from the corpse, such as posture, marks, lividity, spilled items, or disturbance, but do NOT state the cause of death.
-    - Mention nearby explorable areas naturally.
-    - Also include one clear sentence listing the exact room names the player can move to next.
-    - 3 to 5 short paragraphs.
-    - Keep the tone like contemporary detective fiction.
+    * Introduce the overall situation: there has been a murder, who the victim is, why the detective was called, and what immediate uncertainty surrounds the scene.
+    * Describe how the crime scene looks and feels.
+    * Mention people physically present in the room and make clear they have not been questioned yet.
+    * Mention visible objects in the room, but do NOT identify or name the murder weapon.
+    * You may describe visual clues from the corpse, such as posture, marks, lividity, spilled items, or disturbance, but do NOT state the cause of death.
+    * Mention nearby explorable areas naturally.
+    * Also include one clear sentence listing the exact room names the player can move to next.
+    * 3 to 5 short paragraphs.
+    * Keep the tone like contemporary detective fiction.
     """
     user = f"""
     Victim name, allowed to reveal: {gt.victim}
@@ -1704,7 +1712,7 @@ def generate_opening_narration(gt: HiddenStoryDB, world: WorldState, events: Lis
     Nearby explorable areas: {nearby}
     Exact room options to include clearly: {room_options}
     Hidden weapon/location for world consistency only, NEVER mention in opening: weapon is hidden in {world.murder_weapon_location}
-    Persistent pressure, do not over-explain: {state.persistent_suspense.core_beat if state.persistent_suspense else 'None'}
+    Persistent pressure, do not over explain: {state.persistent_suspense.core_beat if state.persistent_suspense else 'None'}
     """
     text = generate_text_response(system, user, model="gpt-4o-mini")
     if text:
@@ -1729,7 +1737,7 @@ def narrate_player_turn(
     accommodation_text: str = ""
 ) -> str:
     """
-    Convert the game engine's classification/result into player-facing narration.
+    Convert the game engine's classification/result into player facing narration.
     This keeps the classification internally available but avoids showing a mechanical report.
     """
     room = world.rooms[world.player_location]
@@ -1747,30 +1755,30 @@ def narrate_player_turn(
     }
     system = """
     You are the live narrator for an interactive murder mystery text game.
-    The player is the detective. Turn the engine result into natural second-person narration.
+    The player is the detective. Turn the engine result into natural second person narration.
 
     Hard continuity rules:
-    - Only narrate consequences of the player's CURRENT command plus facts already in Current known facts.
-    - Do NOT say the detective has interviewed, searched, found, learned, or accused anyone unless the current command or Event resolution says it happened.
-    - Do NOT reference upcoming events, future clues, hidden motives, or the killer unless the case has just been completed.
-    - Do NOT make it sound like a scene was already investigated before the player acted.
-    - If the player moved rooms, describe arriving in the new location, who is there, and what rooms can be reached from there.
-    - Only describe what is going on in the room, who is in the room, and nearby room options when Entered new room is true.
-    - On the first visit to a room, describe the room itself and the visible objects inside it. On later visits, keep the room recap brief.
-    - If Entered new room is false, do NOT repeat the room description or list all people/exits; focus mainly on the effect of the detective's current action.
-    - If NPC movement note says someone leaves or enters while visible to the detective, clearly narrate it.
-    - Do NOT say a character enters the room just because they are listed as currently visible; only say they enter if NPC movement note explicitly says they enter.
-    - If a character is already present, describe them as present/waiting/standing there, not entering.
-    - If the action did not advance the plot, keep the response grounded in the current action and ask for the next move naturally.
+    * Only narrate consequences of the player's CURRENT command plus facts already in Current known facts.
+    * Do NOT say the detective has interviewed, searched, found, learned, or accused anyone unless the current command or Event resolution says it happened.
+    * Do NOT reference upcoming events, future clues, hidden motives, or the killer unless the case has just been completed.
+    * Do NOT make it sound like a scene was already investigated before the player acted.
+    * If the player moved rooms, describe arriving in the new location, who is there, and what rooms can be reached from there.
+    * Only describe what is going on in the room, who is in the room, and nearby room options when Entered new room is true.
+    * On the first visit to a room, describe the room itself and the visible objects inside it. On later visits, keep the room recap brief.
+    * If Entered new room is false, do NOT repeat the room description or list all people/exits; focus mainly on the effect of the detective's current action.
+    * If NPC movement note says someone leaves or enters while visible to the detective, clearly narrate it.
+    * Do NOT say a character enters the room just because they are listed as currently visible; only say they enter if NPC movement note explicitly says they enter.
+    * If a character is already present, describe them as present/waiting/standing there, not entering.
+    * If the action did not advance the plot, keep the response grounded in the current action and ask for the next move naturally.
 
     Style rules:
-    - Write 1 to 3 short paragraphs.
-    - Do NOT show labels like classification, reason, world state, exits, objects, or event plan.
-    - Acknowledge exactly what the player tried to do.
-    - If the action advanced the plot, make the clue/testimony feel discovered through that action.
-    - If the action was exceptional, narrate either the intervention or accommodation in-world.
-    - Do not start with a markdown location header; the interface will show the location before your narration.
-    - End with a soft cue that the detective can choose the next action.
+    * Write 1 to 3 short paragraphs.
+    * Do NOT show labels like classification, reason, world state, exits, objects, or event plan.
+    * Acknowledge exactly what the player tried to do.
+    * If the action advanced the plot, make the clue/testimony feel discovered through that action.
+    * If the action was exceptional, narrate either the intervention or accommodation in world.
+    * Do not start with a markdown location header; the interface will show the location before your narration.
+    * End with a soft cue that the detective can choose the next action.
     """
     user = f"""
     Player command: {command}
@@ -1809,10 +1817,15 @@ def narrate_player_turn(
         return f"{evaluation.response_text}\n\n{entry_context['movement_note']}"
     return evaluation.response_text
 
+# ==========================================
+# [ARCHITECTURE COMPONENT: Action Interpreter]
+# ==========================================
+# This maps player natural language commands into structured intent for the Drama Manager.
+
 def interpret_player_action(command: str, world: WorldState, events: List[InteractiveEvent], gt: HiddenStoryDB) -> ActionInterpretation:
     command = command.strip()[:300]
 
-    # Direct room-name navigation is handled by the world graph. This recognizes
+    # Direct room name navigation is handled by the world graph. This recognizes
     # actual reachable destinations, while all semantic action classification is
     # delegated to the LLM.
     lower = command.lower()
@@ -1825,9 +1838,9 @@ def interpret_player_action(command: str, world: WorldState, events: List[Intera
             )
 
     system = """
-    You are the Action Interpreter for an open-ended detective text game.
+    You are the Action Interpreter for an open ended detective text game.
 
-    Convert the player's natural-language command into structured intent. Use context,
+    Convert the player's natural language command into structured intent. Use context,
     not keyword rules. Decide whether the player is trying to move, inspect, interview,
     take evidence, destroy or alter something, lock/block access, accuse someone, wait,
     or do something else.
@@ -1853,14 +1866,14 @@ def interpret_player_action(command: str, world: WorldState, events: List[Intera
     if parsed:
         return parsed
 
-    # Last-resort technical fallback avoids semantic keyword decisions.
+    # Last resort technical fallback avoids semantic keyword decisions.
     return ActionInterpretation(intent=command, action_type="other", target=command)
 
 
 def action_matches_event(action: ActionInterpretation, event: InteractiveEvent) -> bool:
     """Use an LLM to decide whether the player action satisfies the current event.
 
-    This replaces the older word-overlap matcher. The decision is made from the
+    This replaces the older word overlap matcher. The decision is made from the
     interpreted action, event preconditions/effects, and planned action rather than
     hardcoded keyword overlap.
     """
@@ -1870,7 +1883,7 @@ def action_matches_event(action: ActionInterpretation, event: InteractiveEvent) 
 
     Return ActionEventMatch. Do not require exact wording. A match means the action would
     reasonably accomplish the planned action or directly produce the event's intended
-    investigative effect. A non-match means the action may still be consistent with the
+    investigative effect. A non match means the action may still be consistent with the
     world, but it does not complete this plot point.
     """
     user = f"""
@@ -1913,14 +1926,14 @@ def event_preconditions_met(world: WorldState, event: InteractiveEvent) -> Tuple
 def threatens_active_causal_link(action: ActionInterpretation, world: WorldState, events: List[InteractiveEvent]) -> Optional[str]:
     """Use an LLM to identify whether an action threatens active causal links.
 
-    This replaces keyword/word-overlap threat detection. The LLM receives the future
+    This replaces keyword/word overlap threat detection. The LLM receives the future
     event plan, current world state, and interpreted action, then decides whether the
     action would negate a precondition, causal link, evidence path, character availability,
     or overall mystery solvability.
     """
     remaining = events[world.event_index:]
     system = """
-    You are a causal-link monitor for an interactive detective story.
+    You are a causal link monitor for an interactive detective story.
 
     Decide whether the player's action threatens the remaining event timeline. A threat
     can be explicit, such as destroying an object named in a causal link, or commonsense,
@@ -1957,7 +1970,7 @@ def threatens_active_causal_link(action: ActionInterpretation, world: WorldState
 def evaluate_player_action(action: ActionInterpretation, command: str, world: WorldState, events: List[InteractiveEvent], gt: HiddenStoryDB) -> ActionEvaluation:
     next_event = events[world.event_index] if world.event_index < len(events) else None
 
-    # Final event: the player must explicitly accuse a suspect. Do not auto-complete
+    # Final event: the player must explicitly accuse a suspect. Do not auto complete
     # the case from a generic investigative action.
     if next_event and next_event.event_id == FINAL_INTERACTIVE_EVENT_COUNT:
         met, why_not = event_preconditions_met(world, next_event)
@@ -2096,6 +2109,11 @@ def advance_constituent_event(world: WorldState, events: List[InteractiveEvent],
     return "The planned event resolves and the investigation moves forward."
 
 
+# ==========================================
+# [ARCHITECTURE COMPONENT: Drama Manager]
+# ==========================================
+# This component handles exceptional actions via Intervention (redirection) or Accommodation (world mutation).
+
 def choose_drama_manager_tool(action: ActionInterpretation, command: str, threat: str, world: WorldState, events: List[InteractiveEvent]) -> str:
     """Use an LLM to select accommodation vs intervention for an exceptional action.
 
@@ -2184,6 +2202,9 @@ def apply_exception_world_change(world: WorldState, action: ActionInterpretation
 
 
 def intervene_exception(action: ActionInterpretation, command: str, world: WorldState, events: List[InteractiveEvent], gt: HiddenStoryDB, state: StateTracker, reason: str) -> InterventionResult:
+    # Visual indicator for the user on the website
+    st.warning("⚠️ **Drama Manager: Intervention Triggered.** Preserving the original timeline.")
+    
     system = """
     You are the Intervention tool for a Drama Manager in an interactive detective story.
 
@@ -2221,12 +2242,15 @@ def intervene_exception(action: ActionInterpretation, command: str, world: World
 
 
 def accommodate_exception(action: ActionInterpretation, command: str, world: WorldState, events: List[InteractiveEvent], gt: HiddenStoryDB, state: StateTracker) -> AccommodationResult:
+    # Visual indicator for the user on the website
+    st.info("🛠️ **Drama Manager: Accommodation Triggered.** Mutating world state and repairing future events.")
+
     system = """
     You are the Accommodation tool for a Drama Manager in an interactive detective story.
     The player attempted an exceptional action that has already been allowed to change the world.
 
     Your job:
-    1. Acknowledge the player's action and its concrete world-state consequence.
+    1. Acknowledge the player's action and its concrete world state consequence.
     2. Repair only the future events made impossible by that change.
     3. Keep repaired events close to the original plan, using minor substitutions like a backup clue, another witness, another access route, or a different room.
     4. Do not use intervention language such as saying the action failed; accommodation means the action happened.
@@ -2282,13 +2306,13 @@ def generate_full_crime_reveal(gt: HiddenStoryDB, state: StateTracker, world: Wo
 
     Write the full crime reveal clearly and dramatically.
     Include:
-    - that the case has been completed
-    - the killer
-    - the motive
-    - the murder weapon / method
-    - the step-by-step crime timeline
-    - why the other suspects were not the murderer
-    - how the discovered clues fit together
+    * that the case has been completed
+    * the killer
+    * the motive
+    * the murder weapon / method
+    * the step by step crime timeline
+    * why the other suspects were not the murderer
+    * how the discovered clues fit together
 
     Keep it concise but complete. Do not hide the truth anymore.
     """
@@ -2365,12 +2389,12 @@ def render_story_history():
 
 
 def current_location_line(world: WorldState) -> str:
-    """Small player-facing location marker without exposing room internals."""
+    """Small player facing location marker without exposing room internals."""
     return f"**Current location: {world.player_location}**"
 
 
 # ==========================================
-# 11. Streamlit Frontend: Phase II Interactive Game
+# 11. Streamlit Frontend: [ARCHITECTURE COMPONENT: Interactive Loop & Player Input]
 # ==========================================
 
 if __name__ == "__main__":
@@ -2392,13 +2416,13 @@ if __name__ == "__main__":
 
         st.markdown("---")
         st.markdown("### Phase II Architecture")
-        st.markdown("- **Phase I Generator:** creates hidden crime + plot points")
-        st.markdown("- **World Generator:** converts scenes into rooms, objects, suspects, exits")
-        st.markdown("- **Interactive Loop:** accepts open-ended player commands")
-        st.markdown("- **Action Interpreter:** maps commands to structured actions")
-        st.markdown("- **Drama Manager:** classifies actions as constituent, consistent, or exceptional")
-        st.markdown("- **Accommodation:** allows a disruptive action, mutates world state, then repairs future events")
-        st.markdown("- **Intervention:** blocks or soft-fails impossible/shortcut actions while preserving the timeline")
+        st.markdown("* **Phase I Generator:** creates hidden crime + plot points")
+        st.markdown("* **World Generator:** converts scenes into rooms, objects, suspects, exits")
+        st.markdown("* **Interactive Loop:** accepts open ended player commands")
+        st.markdown("* **Action Interpreter:** maps commands to structured actions")
+        st.markdown("* **Drama Manager:** classifies actions as constituent, consistent, or exceptional")
+        st.markdown("* **Accommodation:** allows a disruptive action, mutates world state, then repairs future events")
+        st.markdown("* **Intervention:** blocks or soft fails impossible/shortcut actions while preserving the timeline")
 
         if st.button("Reset Game"):
             reset_interactive_session()
@@ -2439,9 +2463,15 @@ if __name__ == "__main__":
             st.markdown(current_location_line(world))
             render_story_history()
 
+            # [ARCHITECTURE COMPONENT: Player Input]
             command = st.text_input("What do you do next?", max_chars=300, key="phase2_command")
+            
+            # [ARCHITECTURE COMPONENT: Interactive Loop Implementation]
             if st.button("Submit Action") and command.strip():
+                # Call Action Interpreter
                 action = interpret_player_action(command, world, events, gt)
+                
+                # Evaluate action (Classification)
                 evaluation = evaluate_player_action(action, command, world, events, gt)
                 world.turns += 1
                 world.last_classification = evaluation.classification
@@ -2451,6 +2481,7 @@ if __name__ == "__main__":
                 event_resolution = ""
                 accommodation_text = ""
 
+                # Handle Exceptional Actions (Drama Manager: Intervention vs Accommodation)
                 if evaluation.classification == "exceptional":
                     if evaluation.intervention_needed and not evaluation.accommodation_needed:
                         intervention = intervene_exception(action, command, world, events, gt, state, evaluation.reason)
@@ -2464,6 +2495,7 @@ if __name__ == "__main__":
                         apply_accommodation(world, events, accommodation)
                         accommodation_text = accommodation.response_text
                 else:
+                    # Handle Constituent or Consistent Actions
                     apply_world_updates(world, evaluation, action)
                     if evaluation.should_advance_event:
                         if action.action_type == "accuse":
@@ -2473,6 +2505,7 @@ if __name__ == "__main__":
                     if movement_note:
                         event_resolution = (event_resolution + "\n\n" + movement_note).strip()
 
+                # Generate the final narrated response
                 response = narrate_player_turn(
                     command=command,
                     action=action,
@@ -2489,6 +2522,7 @@ if __name__ == "__main__":
                     world.solved = True
                     response += "\n\n### Case Complete\nThe final pieces lock into place. The mystery has reached its conclusion."
 
+                # Update Loop: Save state and refresh
                 st.session_state["phase2_world"] = world
                 st.session_state["phase2_events"] = events
                 add_transcript_entry("system", response, location=world.player_location)
