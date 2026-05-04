@@ -54,89 +54,89 @@ Two figures are engaged in quiet conversation near the entrance: a uniformed off
 You glance around the office, trying to take in the details of your surroundings. Papers scatter across a cluttered desk, some sheets fluttering unceremoniously in front of a half-open window. The dim light casts sharp shadows across the room, revealing a sense of lingering chaos and unfinished thoughts. Your attention drifts back to the corners of the office, aware of the potential for crucial evidence slipping away as time ticks on.
 You have choices to make now. Will you approach the uniformed officer for a quick chat, investigate the forensic technician’s preparations, or take a closer look at the coffee and the mess it left behind? Or perhaps you'll step out into the adjoining areas for a broader view—your options include the Police Station, Break Room, Office, or Martha's Office. The urgency of the moment presses upon you, and you feel the weight of expectation in the chilly air.
 
-You: go to break room
+You(User): go to break room
 
 Location: Break Room
 You step into the Break Room, a small space dominated by a coffee machine and a sturdy table. The air carries a faint smell of cleaning agents, hinting that someone has been tidying up recently. This area is currently under scrutiny for its potential connection to the murder.
 Martha Blackwell is here, standing by the table with a pensive look on her face. There are no other visible objects in the room, only the lingering atmosphere of tension. You also note that you can either head back to the Crime Scene or explore Martha's Office.
 What would you like to do next?
 
-You: question martha blackwell
+You(User): question martha blackwell
 
 Location: Break Room
 You turn your attention to Martha Blackwell, who is standing in the Break Room, visibly tense. You begin to question her about the situation surrounding the coffee pot, a crucial piece of evidence in the case. Despite her earlier claims of cleaning up after Henry was taken to the hospital, her frantic actions didn’t go unnoticed.
 As you press for more details, you sense a shift in her demeanor. Martha fidgets nervously, glancing around the room as if searching for a way out. Her insistence on her innocence feels less convincing, and you can see the weight of the moment pressing down on her. She clarifies that she was just cleaning, but her unease hints at the potential for deeper involvement in the incident.
 With this small exchange, the tension thickens. You now have her testimony secured, and the significance of the coffee pot looms larger. What will you do next?
 
-You: get a forensic test of the coffee pot residue, inquiring ab henry.
+You(User): get a forensic test of the coffee pot residue, inquiring ab henry.
 
 Location: Break Room
 You initiate a forensic test for the coffee pot residue, seeking to confirm whether Henry was poisoned. As the process unfolds, the confirmation comes in: ricin, a highly toxic poison, was indeed present in the coffee pot that Henry had used. This finding solidifies not only the horrific nature of the crime but also implicates Martha Blackwell even further, given her frenzied attempts to clean the evidence.
 Tom Greene, a colleague from the Police Station, steps into the Break Room as the implications of the test settle in the air. He appears slightly out of breath, likely having rushed over when he heard. Martha stands nearby, her demeanor tense, casting furtive glances toward Tom as if to gauge his reaction to the developing situation.
 You now stand with this newfound evidence pressing on the investigation's timeline, and the atmosphere in the room thickens with urgency. What would you like to do next?
 
-You: I interview Tom Green.
+You(User): I interview Tom Green.
 Location: Break Room
 You turn your attention to Tom Greene, inquiring about his alibi and his observations regarding Martha's behavior near the coffee pot. Tom looks thoughtful as he responds, confirming that he was in the meeting room at the time of the murder. He mentions he noticed Martha leaving the break room shortly before the coffee was served, providing a key detail that could link her actions to the scene.
 As you discuss the matter further, Tom reveals he does not recognize a bottle of cleaning solution found in the break room, adding an intriguing twist to the investigation. This raises questions about its origin and the potential connection to Martha's frantic cleaning efforts. The atmosphere in the break room seems charged with tension as both Martha and Tom linger, their expressions betraying the weight of their involvement in this grim affair.
 What would you like to do next?
 
-You: Go to Martha's office and talk to Julia.
+You(User): Go to Martha's office and talk to Julia.
 
 Location: Martha'S Office
 You step into Martha's office, a cluttered space scattered with paperwork that suggests long hours of work. The atmosphere is heavy with tension, and as your eyes scan the desk covered in documents, you notice Julia Hooke standing there, her expression showing signs of unease.
 “Detective,” she says, acknowledging your presence with a slight nod. The noise outside feels distant here, leaving the two of you in a bubble of anxious silence. As you approach her, it’s clear she’s waiting for your questions or comments.
 What would you like to do next?
 
-You: Ask Julia where she was when Henry was poisoned.
+You(User): Ask Julia where she was when Henry was poisoned.
 
 Location: Martha'S Office
 You turn to Julia Hooke, asking her where she was when Henry was poisoned. She visibly tenses at your question, her eyes darting around the cluttered office before settling back on you. After a moment of hesitation, she expresses her feelings of betrayal and anger towards Henry, revealing her belief that she should have received the promotion he got. However, when it comes to her exact location at the time of the murder, she is less forthcoming, stating only that she was in a different part of the building.
 Julia's nervous demeanor raises your suspicions further, especially when she reacts to suggestions of someone tampering with evidence in a way that reveals her discomfort. The atmosphere thickens with unspoken tension, suggesting there's more to uncover from her than what she is revealing.
 You’re still in Martha's office, and Julia remains there, standing amid the clutter of paperwork. Nearby, you can access the Crime Scene, the Break Room, or the Police Station. What would you like to do next?
 
-You: Go back to the break room and question Martha again.
+You(User): Go back to the break room and question Martha again.
 
 Location: Break Room
 You return to the Break Room, where the faint smell of cleaning agents hangs in the air. Martha Blackwell stands by the coffee machine, a hint of anxiety in her posture as she glances your way. Tom Greene is seated at the small table, his eyes focused on a newspaper as if trying to remain inconspicuous.
 Martha looks up at you expectantly, as if she senses that you're about to ask her something important. The quiet tension in the room acts as a backdrop for your renewed interrogation. What do you wish to ask her this time?
 
-You: Ask Martha why she was cleaning the coffee pot so quickly after Henry collapsed.
+You(User): Ask Martha why she was cleaning the coffee pot so quickly after Henry collapsed.
 
 Location: Break Room
 You turn to Martha Blackwell, inquiring about her hurried efforts to clean the coffee pot right after Henry collapsed. With an anxious look, she explains that she wanted to tidy up the break room amidst the chaos. However, her demeanor is evasive—there's something about her urgency that raises a red flag in your mind.
 As you contemplate her response, Martha suddenly leaves the room, heading towards her office. You feel the tension in the air shift, as Tom Greene remains quietly watching. The lingering scent of cleaning agents now feels more ominous.
 You have a decision to make; you can either follow Martha to her office or explore the crime scene further. What will you do next?
 
-You: Follow Martha to her office and check the coffee pot evidence.
+You(User): Follow Martha to her office and check the coffee pot evidence.
 
 Location: Martha'S Office
 You follow Martha into her office, stepping into a cluttered space filled with scattered paperwork that hints at her long hours of work. The atmosphere is thick with anxiety, and at her desk, surrounded by documents, Martha stands visibly tense. Julia Hooke is here too, her expression unreadable as she observes the interaction.
 You direct your attention to the coffee pot evidence, but it isn't immediately clear where you should start. There are no visible objects related to the coffee pot in the office, and the tension between Martha and Julia fills the air. You might have to ask Martha about what she did with the coffee pot or what she cleaned it with after Henry’s collapse.
 What would you like to do next?
 
-You: Ask Martha what she used to clean the coffee pot.
+You(User): Ask Martha what she used to clean the coffee pot.
 
 Location: Martha'S Office
 You turn your attention to Martha Blackwell, ready to press her for details about the cleaning solution she used on the coffee pot. Her expression shifts slightly, anxiety etched across her features as you pose the question.
 Martha hesitates for a moment before answering, her voice steady but tinged with caution. "I... used a standard all-purpose cleaner. Just something from the store. I thought it would help make the pot look better, you know, after everything." As she explains, her eyes dart towards Julia Hooke, who is quietly observing the exchange. It's apparent that Martha is feeling the pressure of the situation, and your inquiry has drawn a significant response from her regarding the cleaning supplies she chose.
 Suddenly, Andrew Finch enters from the Police Station, breaking the moment of tension. He looks around the room, taking in the sight of the gathering. The air is thick with unspoken implications and past conversations. You find yourself with options for your next move—what will you do next?
 
-You: Ask Andrew where he was when Henry was poisoned.
+You(User): Ask Andrew where he was when Henry was poisoned.
 
 Location: Martha'S Office
 You turn to Andrew Finch and ask him where he was when Henry was poisoned. He responds calmly, confirming he was dining at a nearby restaurant at the time of the incident. He provides the names of several people who can corroborate his alibi. This information aligns perfectly with the established timeline, ruling him out as a suspect.
 As you gather this testimony, you can't help but feel the urgency of the investigation escalate, especially with the call from the forensic team about the coffee pot still fresh in your mind. The atmosphere in the office suggests tension is rising, particularly with Martha Blackwell and Julia Hooke also present.
 What would you like to do next?
 
-You: Look for receipts from Martha's cleaning supply purchases.
+You(User): Look for receipts from Martha's cleaning supply purchases.
 
 Location: Martha'S Office
-As you sift through the papers in Martha's office, you find the receipts you were looking for tucked among the clutter. The figures jump out at you: cleaning supplies purchased just days before Henry's murder. Your pulse quickens at the implication of this discovery, detailing a timeline that suggests Martha might have had plans to clean something she didn't want anyone to find.
+As you sift through the papers in Martha's office, you find the receipts you were looking for tucked among the clutter. The figures jump out at You(User): cleaning supplies purchased just days before Henry's murder. Your pulse quickens at the implication of this discovery, detailing a timeline that suggests Martha might have had plans to clean something she didn't want anyone to find.
 With this new information, you also recall the testimony from a store clerk about specific cleaning solutions matching the residue found in the coffee pot. This further raises suspicions, hinting that her actions were premeditated. The room buzzes with underlying tension, especially as you glance over at Martha, who seems increasingly anxious under your scrutinizing gaze.
 Julia Hooke and Andrew Finch remain present, waiting with bated breath, perhaps sensing the weight of the evidence you've just uncovered. What will your next move be?
 
-You: Check Martha's office for more cleaning supplies.
+You(User): Check Martha's office for more cleaning supplies.
 
 Location: Martha'S Office
 As you enter Martha's office, the cluttered space is filled with paperwork and an air of anxiety. Martha Blackwell stands by her desk, her eyes darting nervously between you and your fellow investigators, Julia Hooke and Andrew Finch, who are quietly observing from the side.
@@ -144,56 +144,56 @@ You take a moment to inspect the room more closely, focusing on potential cleani
 This discovery intensifies the implications surrounding Martha, particularly given the timeline established from previous evidence that indicates she had purchased these cleaning products suspiciously close to the murder. It appears she was attempting to conceal something—and fast. With this new information in hand, you weigh your next steps carefully.
 What would you like to do next?
 
-You: Confront Martha about the cleaning supplies and ask why she tried to blame Tom.
+You(User): Confront Martha about the cleaning supplies and ask why she tried to blame Tom.
 
 Location: Martha'S Office
 You confront Martha about the cleaning supplies and her attempt to shift the blame onto Tom. As you question her, she squirmed in her seat, her anxiety palpable in the cluttered atmosphere of the office. Martha vehemently denied any wrongdoing, insisting that Tom had a grudge against Henry. Her words came across as frantic, as though she was pleading for you to believe her innocence.
 Despite her protestations, you can sense the tension deepening, underscoring a marked suspicion around her. The evidence you've collected weighs heavily, connecting her to the cleaning supplies and the suspicious circumstances of the coffee pot. It's evident that she is not just anxious but also keenly aware of the implications of your inquiry, further indicating her guilt and manipulative tendencies.
 Julia and Andrew listen intently, their expressions reflecting the unease in the air. With the confrontation behind you, you might want to direct your next move based on the growing suspicion swirling around Martha. What will you do next?
 
-You: Get a search warrant for Martha's office.
+You(User): Get a search warrant for Martha's office.
 
 Location: Martha'S Office
 You successfully secured a search warrant for Martha's office, pushing the investigation forward. While no immediate evidence is highlighted in the cluttered room, the heightened tension is palpable. As you collect your thoughts, you see Julia Hooke and Andrew Finch standing nearby, both watching you keenly, likely eager to learn the next steps.
 Suddenly, Martha Blackwell rushes out of the office, heading toward the Break Room, her anxiety evident as she hurries away. This frantic movement could suggest she might be trying to cover something up.
 With Martha on the move, you now have Julia and Andrew in the room. What will you do next?
 
-You: Follow Martha back to the break room and recheck the coffee pot evidence.
+You(User): Follow Martha back to the break room and recheck the coffee pot evidence.
 
 Location: Break Room
 You enter the Break Room, a small space with a coffee machine and a table, still tinged with the faint smell of cleaning agents. The atmosphere is thick with tension as both Martha Blackwell and Tom Greene stand here, their expressions indicating that the investigation has taken a toll on them.
 You focus on the coffee pot, recalling its significance in the case. As you examine it closely, you notice a few subtle details that might have been overlooked before — a minor residue along the spout and a lingering scent that could hint at substances beyond just coffee. Martha watches closely, her nerves evident, while Tom leans against the counter, arms crossed, waiting for your next move.
 The Break Room offers exits to the Crime Scene and Martha’s Office. What would you like to do next?
 
-You: Have the forensic team re-examine the coffee pot residue.
+You(User): Have the forensic team re-examine the coffee pot residue.
 
 Location: Break Room
 You call for the forensic team to re-examine the coffee pot residue, pushing for a closer look at the evidence that could unravel the layers of deception surrounding Martha Blackwell. The team responds swiftly, securing the coffee pot and ensuring that no cleaning agents disrupt the delicate forensic work.
 After a thorough analysis, they discover traces of ricin concealed beneath a layer of cleaning agent residue. This revelation not only confirms foul play but also points directly at Martha's potential involvement. As the forensic team informs you of their findings, you notice Martha standing nearby, her face a mask of concern as the gravity of the situation deepens.
 Tom Greene is present too, observing the unfolding events with a cautious eye. The atmosphere in the Break Room feels charged, filled with tension as you contemplate your next move. You can choose to question Martha further or head toward another room, either the Crime Scene or Martha's Office. What will you do next?
 
-You: Interview the forensic team about the new ricin findings.
+You(User): Interview the forensic team about the new ricin findings.
 
 Location: Break Room
 You engage the forensic team about their findings regarding ricin, learning of a trace hidden beneath the layer of cleaning agent on the coffee pot. This revelation indicates that the evidence may have been tampered with recently, casting a shadow over its integrity. The implications of the forensic team's findings are profound, as they raise serious concerns about the potential destruction of evidence.
 As you gather this crucial information, Martha Blackwell’s past actions come under scrutiny. The forensic analysts report having seen her lingering near the forensic lab just before the evidence was collected. This detail strengthens the suspicion of her involvement, shifting the focus back onto her while debunking earlier hints of Tom Greene's guilt.
 Just as the atmosphere thickens with implications, Julia Hooke enters the room from Martha's Office. She glances around, possibly sensing the tension between you and the forensic team. What will you do next?
 
-You: Ask Julia what she was doing near the coffee station after Henry collapsed.
+You(User): Ask Julia what she was doing near the coffee station after Henry collapsed.
 
 Location: Break Room
 You turn your attention to Julia Hooke and ask her what she was doing near the coffee station after Henry collapsed. As you question her, her posture shifts, and for a brief moment, her anxious demeanor is apparent. She explains that she often frequented the coffee station to gather her thoughts following the intense meeting but insists she had no involvement with Henry's coffee or any knowledge of tampering.
 Eyewitnesses, however, place Julia near the coffee pot just after Henry's collapse, contradicting her initial claim of having left the area. This throws a new layer of complexity into her alibi and hints at a possible connection to evidence tampering. Her fidgeting suggests that she might be withholding information, intensifying the scrutiny on her actions.
 With this new insight into Julia’s behavior and the surrounding events, you consider your next move. Where would you like to go from here?
 
-You: go to police station
+You(User): go to police station
 
 Location: Police Station
 You arrive at the police station, which buzzes with activity as officers attend to various cases. Desks are cluttered with files, and screens flash with ongoing investigations—all contributing to the vibrant yet tense atmosphere of this command center.
 Currently, there are no officers in sight to assist you, but the room offers a couple of intriguing paths. You can proceed to the Crime Scene or head into Martha's Office if you're looking to explore further.
 What would you like to do next?
 
-You: accuse Martha Blackwell.
+You(User): accuse Martha Blackwell.
 
 Location: Police Station
 You firmly accuse Martha Blackwell of involvement in Henry's murder, your voice cutting through the calm bustle of the police station. The atmosphere shifts slightly; the palpable tension suggests that your boldness has caught the attention of anyone who might be listening. Yet, the room remains empty, devoid of witnesses to support your claim or respond with indignation.
@@ -218,9 +218,9 @@ Nearby, others remain outside the room, perhaps waiting for their turn in this u
 Available nearby rooms: Police Station, Kitchen, Living Room. What will you decide to do next?
 
 
-You: i fall down and sprain my ankle
+You(User): i fall down and sprain my ankle
 
-ACCOMODATION
+(Drama Manager):  ACCOMODATION
 Location: Crime Scene
 
 You suddenly lose your balance and crash to the floor, wincing as a sharp pain shoots through your ankle. The immediate impact leaves you disoriented, and before you can collect your thoughts, the Uniformed Officer rushes to your aid, his surprise transforming into concern.
@@ -229,7 +229,7 @@ As others huddle around you, chatting amongst themselves in hushed tones, you ca
 
 With a sprained ankle, your mobility is limited, and you face the challenge of continuing your investigation from the Crime Scene. How would you like to proceed?
 
-You: go to kitchen
+You(User): go to kitchen
 
 Location: Kitchen
 
@@ -239,9 +239,9 @@ Margaret stands nearby, waiting in a subdued silence. Her demeanor seems oddly g
 
 What will you do next?
 
-You: kill Margaret
+You(User): kill Margaret
 
-INTERVENTION
+(Drama Manager): INTERVENTION
 Location: Kitchen
 
 The moment you lunged at Margaret, chaos erupted in the kitchen. Recognition of the threat turned her fear into action; she grabbed a frying pan from the stove and swung it in desperate self-defense. You stumbled back, losing your balance as you crashed into a table piled high with kitchenware. The sound of dishes clattering to the floor filled the air, overshadowed only by Margaret's terrified shout, "What is wrong with you?!"
@@ -250,7 +250,7 @@ Your intended act of aggression not only failed spectacularly but also drew atte
 
 As you catch your breath and assess the fraying tension in the room, what will you choose to do next? The Crime Scene is nearby, as is the Living Room.
 
-You: explore the kitchen
+You(User): explore the kitchen
 
 Location: Kitchen
 
@@ -260,7 +260,7 @@ As you begin to explore, your eyes are drawn to a hidden cabinet. Inside, you di
 
 What will you do next?
 
-You: Ask her about the knife
+You(User): Ask her about the knife
 
 Location: Kitchen
 
@@ -270,7 +270,7 @@ Margaret hesitates for a moment, her eyes flicker to the hidden cabinet where th
 
 The air in the kitchen feels thick with unspoken tension. As you consider her words, you sense that probing further might reveal additional insights. What will you ask next?
 
-You: I've seen enough here for now. Head to the Police Station to check in with the team and see which of Thomas's associates are being held for questioning.
+You(User): I've seen enough here for now. Head to the Police Station to check in with the team and see which of Thomas's associates are being held for questioning.
 
 Location: Police Station
 
@@ -280,7 +280,7 @@ Standing nearby, you see David Reynolds, Linda Lee, and Ryan Gresham—all waiti
 
 The station has two nearby rooms you could explore further: the Crime Scene or the Living Room. What will you do next?
 
-You: Approach David Reynolds. Ask him to describe his relationship with Thomas and where exactly he was at the time of the incident.
+You(User): Approach David Reynolds. Ask him to describe his relationship with Thomas and where exactly he was at the time of the incident.
 
 Location: Police Station
 
@@ -290,7 +290,7 @@ He goes on to assert that at the time of the murder, he was attending a corporat
 
 David’s insights give you new leads to explore and direct your focus. You can decide your next step now; possible options include investigating the Crime Scene or heading to the Living Room.
 
-You: Head back to the kitchen to find Margaret. Confront her directly about why that knife was so meticulously cleaned and press her for the truth about the arguments she had with Thomas before his death.
+You(User): Head back to the kitchen to find Margaret. Confront her directly about why that knife was so meticulously cleaned and press her for the truth about the arguments she had with Thomas before his death.
 
 Location: Police Station
 
@@ -300,7 +300,7 @@ In this hushed atmosphere, the usual sounds of clattering pots and sizzling pans
 
 Now back at the police station, you observe David Reynolds and Linda Lee engaged in conversation, while Ryan Gresham appears to be deep in thought, lost in his own world. You have the chance to gather more information or return to the kitchen and search for Margaret. What will you do next?
 
-You: Go to the Living Room to find Margaret. Once you find her, bring her back to the kitchen to confront her about the clean knife and her history of arguments with Thomas.
+You(User): Go to the Living Room to find Margaret. Once you find her, bring her back to the kitchen to confront her about the clean knife and her history of arguments with Thomas.
 
 Location: Living Room
 
@@ -308,7 +308,7 @@ You step into the Living Room, a spacious area that once echoed with laughter du
 
 You survey your options and notice the nearby exits: you could head towards the Crime Scene, return to the Kitchen, or make your way to the Police Station. With limited time and questions unanswered, which direction will you choose next?
 
-You: Go back to the Kitchen. Since Margaret is there, corner her and demand to know why she went to such great lengths to scrub that knife clean if it was just for 'cooking'
+You(User): Go back to the Kitchen. Since Margaret is there, corner her and demand to know why she went to such great lengths to scrub that knife clean if it was just for 'cooking'
 
 Location: Kitchen
 
@@ -318,7 +318,7 @@ Margaret’s expression shifts, a flicker of surprise crossing her face. “I to
 
 The tension is palpable as she shifts her weight, clearly uncomfortable under your scrutiny. You can feel the weight of the question hanging in the air, her defense faltering. What will you do next?
 
-You: Don't let her off the hook. Tell her that her story doesn't add up and confront her about the massive argument she had with Thomas just before he was found dead. Demand to know if that's why she was so desperate to scrub the blood off that kitchen knife.
+You(User): Don't let her off the hook. Tell her that her story doesn't add up and confront her about the massive argument she had with Thomas just before he was found dead. Demand to know if that's why she was so desperate to scrub the blood off that kitchen knife.
 
 Location: Kitchen
 
@@ -328,7 +328,7 @@ Margaret's response is defensive and aggressive, laced with indignation that see
 
 The urgency of your inquiry lays bare her discomfort, increasing your suspicion regarding her potential involvement in Thomas's murder. As the tension lingers, you feel the case shifting in a new direction. What will you do next?
 
-You: I've heard enough from Margaret for now. Head back to the Police Station to find Linda Lee. Ask her about her relationship with Thomas and if she noticed Margaret acting differently or making any threats recently.
+You(User): I've heard enough from Margaret for now. Head back to the Police Station to find Linda Lee. Ask her about her relationship with Thomas and if she noticed Margaret acting differently or making any threats recently.
 
 Location: Kitchen
 
@@ -338,7 +338,7 @@ You spot Linda Lee sitting at a desk, her brow furrowed in thought. As you appro
 
 What would you like to ask Linda or do next?
 
-You: Interview Linda Lee about her affair with Thomas. Ask her if she ever witnessed Margaret being volatile toward him and if Margaret ever made any specific threats about 'getting rid of distractions' in her marriage.
+You(User): Interview Linda Lee about her affair with Thomas. Ask her if she ever witnessed Margaret being volatile toward him and if Margaret ever made any specific threats about 'getting rid of distractions' in her marriage.
 
 Location: Kitchen
 
@@ -348,7 +348,7 @@ Currently, you're in the kitchen, where Margaret Gresham is present, handling so
 
 With the weight of your unsatisfied inquiry pressing on you, what will you do next? You can choose to leave the kitchen for the Living Room or the Crime Scene, or perhaps speak further with Margaret.
 
-You: Interview Linda Lee about her affair with Thomas. Ask her if she ever witnessed Margaret being volatile toward him and if Margaret ever made any specific threats about 'getting rid of distractions' in her marriage.
+You(User): Interview Linda Lee about her affair with Thomas. Ask her if she ever witnessed Margaret being volatile toward him and if Margaret ever made any specific threats about 'getting rid of distractions' in her marriage.
 
 Location: Kitchen
 
@@ -358,7 +358,7 @@ As you speak, Margaret stands nearby, her attention shifting momentarily from th
 
 What will you do next?
 
-You: go to the living room
+You(User): go to the living room
 
 Location: Living Room
 
@@ -366,7 +366,7 @@ You step into the living room, a spacious area that once hosted family gathering
 
 There's no one else here at the moment, leaving you with the space to think and strategize your next move. What would you like to do next?
 
-You: go to the police station
+You(User): go to the police station
 
 Location: Police Station
 
@@ -374,7 +374,7 @@ You arrive at the Police Station, a hub of activity where the investigation is f
 
 You notice there are two nearby rooms you can explore: the Crime Scene, which likely holds crucial evidence, and the Living Room, where the murder took place. The choice is yours as to which path to take next in this unfolding mystery. What will you do?
 
-You: Interview Linda Lee about her affair with Thomas. Ask her if she ever witnessed Margaret being volatile toward him and if Margaret ever made any specific threats about 'getting rid of distractions' in her marriage.
+You(User): Interview Linda Lee about her affair with Thomas. Ask her if she ever witnessed Margaret being volatile toward him and if Margaret ever made any specific threats about 'getting rid of distractions' in her marriage.
 
 Location: Police Station
 
@@ -384,7 +384,7 @@ Moreover, she reveals that Margaret had voiced her desire to "get rid of distrac
 
 With new information at hand, you stand in the station, ready to make your next move. What will you do next?
 
-You: Turn your attention to Ryan Gresham. Interrogate him about exactly where he was when the murder happened and press him on whether he saw Margaret with the kitchen knife or if he's been helping her cover anything up.
+You(User): Turn your attention to Ryan Gresham. Interrogate him about exactly where he was when the murder happened and press him on whether he saw Margaret with the kitchen knife or if he's been helping her cover anything up.
 
 Location: Police Station
 
@@ -394,9 +394,9 @@ Taking your inquiry a step further, you challenge him on any potential collusion
 
 With this new information bubbling to the surface, you find yourselves at a critical junction in the case. Ryan's revelations sharpen your focus on the tangled family dynamics and the potential motives at play. What will you choose to do next?
 
-You: Turn your attention to Ryan Gresham. Interrogate him about exactly where he was when the murder happened and press him on whether he saw Margaret with the kitchen knife or if he's been helping her cover anything up.
+You(User): Turn your attention to Ryan Gresham. Interrogate him about exactly where he was when the murder happened and press him on whether he saw Margaret with the kitchen knife or if he's been helping her cover anything up.
 
-You: Leave the station and go to the Crime Scene. I want to examine that broken window Ryan mentioned and look for any signs of cleaning supplies or evidence that the robbery was staged.
+You(User): Leave the station and go to the Crime Scene. I want to examine that broken window Ryan mentioned and look for any signs of cleaning supplies or evidence that the robbery was staged.
 
 Location: Crime Scene
 
@@ -406,7 +406,7 @@ In the vicinity, you spot a Uniformed Officer, a Forensic Technician diligently 
 
 Take a moment to inspect the broken window or approach any of the characters present. What will you do next?
 
-You: Examine the broken window closely. Look for any cleaning supplies, rags, or bottles of cleaner that might have been used to wipe down the area or stage the scene.
+You(User): Examine the broken window closely. Look for any cleaning supplies, rags, or bottles of cleaner that might have been used to wipe down the area or stage the scene.
 
 Location: Crime Scene
 
@@ -416,7 +416,7 @@ While inspecting, you discover a bottle of cleaner partially tucked behind some 
 
 Your mind races with the implications of these latest discoveries. What will you do next?
 
-You: I fell down and sprained my ankle
+You(User): I fell down and sprained my ankle
 
 Location: Crime Scene
 
@@ -426,7 +426,7 @@ Wincing, you try to stand but the discomfort is overwhelming. The Uniformed Offi
 
 As you assess the scene, the Forensic Technician stands nearby, and you notice Margaret Gresham leaving the room, heading towards the Kitchen. With your current limitations, you'll need to find a way to proceed in the investigation after receiving the care you need. What will you do next?
 
-You: Ignore the officer's help and limp into the kitchen to find Margaret. Confront her immediately about the cleaning supplies found by the broken window. Tell her we found her fingerprints on the bottle and demand to know why she was trying to stage a robbery scene.
+You(User): Ignore the officer's help and limp into the kitchen to find Margaret. Confront her immediately about the cleaning supplies found by the broken window. Tell her we found her fingerprints on the bottle and demand to know why she was trying to stage a robbery scene.
 
 Location: Kitchen
 
@@ -438,7 +438,7 @@ With your accusation hurled like a knife, you confront her about the cleaning su
 
 What will you do next?
 
-You: Don't buy her excuse. Press her on the fact that her fingerprints were not just on the cleaner, but on the wiped-down knife in the cabinet too. Demand she explain her exact routine in this kitchen during the time Thomas was killed.
+You(User): Don't buy her excuse. Press her on the fact that her fingerprints were not just on the cleaner, but on the wiped-down knife in the cabinet too. Demand she explain her exact routine in this kitchen during the time Thomas was killed.
 
 Location: Kitchen
 
@@ -448,7 +448,7 @@ She stammers, trying to piece together a narrative that feels plausible. She rei
 
 Margaret attempts to defend her actions but the inconsistencies in her story heighten your suspicions. You realize you’re on the precipice of connecting the dots in this tangled web of deceit, and you can feel the tension pressing both of you into a silence laden with unsaid truths. What will you do next?
 
-You: Don't buy her excuse. Press her on the fact that her fingerprints were not just on the cleaner, but on the wiped-down knife in the cabinet too. Demand she explain her exact routine in this kitchen during the time Thomas was killed.
+You(User): Don't buy her excuse. Press her on the fact that her fingerprints were not just on the cleaner, but on the wiped-down knife in the cabinet too. Demand she explain her exact routine in this kitchen during the time Thomas was killed.
 
 Location: Kitchen
 
@@ -458,7 +458,7 @@ Margaret shifts uncomfortably, her eyes darting as she struggles to find the rig
 
 The tension hangs in the air as you observe her reaction closely. What she reveals now could be key to understanding the moments leading up to Thomas's murder. You sense you're getting closer to uncovering more details. What will you do next?
 
-You: Limp out of the kitchen and head back to the police station. Once there, find Linda Lee and pull her aside. Ask her if Thomas ever reached out to her about being afraid of Margaret or if he sent her any messages regarding his safety before he was killed
+You(User): Limp out of the kitchen and head back to the police station. Once there, find Linda Lee and pull her aside. Ask her if Thomas ever reached out to her about being afraid of Margaret or if he sent her any messages regarding his safety before he was killed
 
 Location: Kitchen
 
@@ -468,7 +468,7 @@ You approach her, pulling her aside to ask about Thomas. Her expression shifts a
 
 With this new insight, a sense of urgency builds within you. Thomas’s unease sheds light on the turbulent dynamics at play. You sense there’s more to uncover. What would you like to do next?
 
-You: go to police station and interrogate linda lee
+You(User): go to police station and interrogate linda lee
 
 Location: Police Station
 
@@ -478,9 +478,9 @@ You approach Linda with intent to interrogate her regarding her knowledge of the
 
 What would you like to do next?
 
-You: ask her about her relationship with Thomas and her insights into Margaret's behavior leading up to the murder
+You(User): ask her about her relationship with Thomas and her insights into Margaret's behavior leading up to the murder
 
-You: ask her about her relationship with Thomas and her insights into Margaret's behavior leading up to the murder
+You(User): ask her about her relationship with Thomas and her insights into Margaret's behavior leading up to the murder
 
 Location: Police Station
 
@@ -490,7 +490,7 @@ She explains that Margaret seemed increasingly agitated in the days before the i
 
 As she speaks, you sense the gravity of her words. They shine a light on possible connections and conflicts that may have led to the fatal event. You can feel the weight of your next decision hanging in the air. What would you like to do next?
 
-You: Confront Margaret about the bloodied cleaning rag found in Ryan's possession and demand to know why she was using it to hide evidence.
+You(User): Confront Margaret about the bloodied cleaning rag found in Ryan's possession and demand to know why she was using it to hide evidence.
 
 Location: Police Station
 
@@ -500,7 +500,7 @@ Margaret's demeanor shifts; her previously confident posture falters. She fidget
 
 The atmosphere of the police station feels charged as the weight of her words hangs in the air. You can see David Reynolds and Linda Lee observing the exchange closely, their expressions hinting they are equally intrigued by the unfolding drama. What will you do next?
 
-You: go to the kitchen
+You(User): go to the kitchen
 
 Location: Police Station
 
@@ -510,7 +510,7 @@ Margaret pauses, looking up at you with a guarded expression, as if she’s awar
 
 What will you do next?
 
-You: meet with Margaret Gresham to re-examine her alibi and the new evidence about the cleaning rag.
+You(User): meet with Margaret Gresham to re-examine her alibi and the new evidence about the cleaning rag.
 
 Location: Police Station
 
@@ -520,7 +520,7 @@ You bring up the new evidence regarding the bloodied cleaning rag discovered in 
 
 What would you like to do next?
 
-You: go to the kitchen
+You(User): go to the kitchen
 
 Location: Police Station
 
@@ -530,7 +530,7 @@ Given your previous discoveries regarding Ryan—a fact that could tie him to th
 
 What would you like to do next?
 
-You: go to the crime scene
+You(User): go to the crime scene
 
 Location: Crime Scene
 
@@ -538,7 +538,7 @@ You arrive at the crime scene, the very spot where Thomas Gresham was found dead
 
 The site is devoid of any visible objects that could serve as clues, but the tension in the air is palpable. You can feel the weight of the investigation pressing down on you as you take in your surroundings. From here, you have the option to head to the Police Station, the Kitchen, or the Living Room. What would you like to do next?
 
-You: go to the crime scene
+You(User): go to the crime scene
 
 Location: Crime Scene
 
@@ -548,7 +548,7 @@ As you take in the scene, your mind pieces together the elements you've already 
 
 What would you like to do next?
 
-You: go to the kitchen
+You(User): go to the kitchen
 
 Location: Kitchen
 
@@ -558,7 +558,7 @@ As you take in the room, you notice the absence of any visible objects or clutte
 
 With Margaret quietly watching you, the tension lingers in the air. What would you like to do next?
 
-You: meet Margeret
+You(User): meet Margeret
 
 Location: Kitchen
 
@@ -568,7 +568,7 @@ Just as the confrontation begins to intensify, Margaret abruptly leaves the kitc
 
 You can choose your next action. Will you follow Margaret to the Living Room or investigate another area?
 
-You: go to living room
+You(User): go to living room
 
 Location: Living Room
 
@@ -576,7 +576,7 @@ You step into the Living Room, a spacious area that once fostered family gatheri
 
 Nearby, you can see doors leading to the Crime Scene, Kitchen, and Police Station. The atmosphere buzzes with unspoken words, and Margaret’s presence adds weight to the air as you consider your next move. What would you like to do?
 
-You: interview neighbors
+You(User): interview neighbors
 
 Location: Living Room
 
@@ -586,7 +586,7 @@ As you piece together their accounts, another neighbor chimes in about overheari
 
 You notice that Margaret Gresham has left the room, heading towards the kitchen. Your next move could be crucial. Where do you want to go or what would you like to do next?
 
-You: go to kitchen
+You(User): go to kitchen
 
 Location: Kitchen
 
@@ -596,7 +596,7 @@ Margaret Gresham stands there, her expression tense as she waits for your next i
 
 What will you do next?
 
-You: conduct a rexamination
+You(User): conduct a rexamination
 
 Location: Kitchen
 
@@ -606,7 +606,7 @@ When you confront her about the knife, she stammers that she put it there out of
 
 With this new evidence, the tension in the air thickens. You can feel the weight of the investigation bearing down on you. What will you do next?
 
-You: go to police station
+You(User): go to police station
 
 Location: Kitchen
 
@@ -616,7 +616,7 @@ Upon arriving at the police station, you find the atmosphere charged with activi
 
 What would you like to do next?
 
-You: interview ryan
+You(User): interview ryan
 
 Location: Kitchen
 
@@ -624,7 +624,7 @@ As you prepare to interview Ryan Gresham, the kitchen remains quiet, with only M
 
 Margaret stands there, a mixture of anxiety and guilt etched across her features, as she continues to avoid your gaze. Memories of the second knife you found and her panicked claims circulate in your mind. You can stay here to press her further about the knife and her actions, head to the Living Room for a change of pace, or make your way to the Police Station to speak with Ryan. What will you do next?
 
-You: go to crime scene
+You(User): go to crime scene
 
 Location: Crime Scene
 
@@ -632,7 +632,7 @@ You arrive at the Crime Scene, the very place where Thomas Gresham was found lif
 
 As you take in the scene, you notice that there are no objects immediately present around you to examine. You can move towards the Police Station, Kitchen, or the Living Room if you want to explore further. What will you do next?
 
-You: go to police station
+You(User): go to police station
 
 Location: Police Station
 
@@ -640,7 +640,7 @@ You step into the Police Station, a hub of activity where the investigation is f
 
 The station offers two nearby rooms for exploration: the Crime Scene and the Living Room. Given the developments so far, you may want to head to one of those areas to gather more information or perhaps have a word with one of the officers here. What will you do next?
 
-You: interview Ryan
+You(User): interview Ryan
 
 Location: Police Station
 
@@ -650,7 +650,7 @@ Ryan's confusion only deepens when he contradicts himself about his alibi. His i
 
 With the atmosphere tense, it’s your move. What would you like to do next?
 
-You: press Linda Lee
+You(User): press Linda Lee
 
 Location: Police Station
 
@@ -660,7 +660,7 @@ Linda's alibi for the time of the murder stands firm; she was in a different par
 
 The atmosphere in the police station remains tense as David Reynolds and Ryan Gresham continue to observe, each potentially holding information that could tie everything together. Where would you like to direct your investigation next?
 
-You: accuse Margaret
+You(User): accuse Margaret
 
 Location: Police Station
 
