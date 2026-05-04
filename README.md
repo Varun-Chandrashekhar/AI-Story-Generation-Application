@@ -221,6 +221,7 @@ Available nearby rooms: Police Station, Kitchen, Living Room. What will you deci
 You(User): i fall down and sprain my ankle
 
 (Drama Manager):  ACCOMODATION
+
 Location: Crime Scene
 
 You suddenly lose your balance and crash to the floor, wincing as a sharp pain shoots through your ankle. The immediate impact leaves you disoriented, and before you can collect your thoughts, the Uniformed Officer rushes to your aid, his surprise transforming into concern.
@@ -242,6 +243,7 @@ What will you do next?
 You(User): kill Margaret
 
 (Drama Manager): INTERVENTION
+
 Location: Kitchen
 
 The moment you lunged at Margaret, chaos erupted in the kitchen. Recognition of the threat turned her fear into action; she grabbed a frying pan from the stove and swung it in desperate self-defense. You stumbled back, losing your balance as you crashed into a table piled high with kitchenware. The sound of dishes clattering to the floor filled the air, overshadowed only by Margaret's terrified shout, "What is wrong with you?!"
